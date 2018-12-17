@@ -137,7 +137,7 @@ Page({
    * 用户点击邀请好友按钮分享
    */
   onShareAppMessage: function (res) {
-    console.log(res);
+    // console.log(res);
     if (res.from === 'button') {
       // 来自页面内转发按钮
       console.log(res.target);

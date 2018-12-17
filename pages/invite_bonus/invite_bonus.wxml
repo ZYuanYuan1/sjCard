@@ -16,26 +16,26 @@
   <!--邀请列表-->
   <view>
     <view class="haveinvite" wx:if="{{homeList.length>0}}">
-         <!--有数据时-->
-         <block wx:for='{{homeList}}' wx:key="{{item.fundsflowid}}">
-                    <view class="singleinvitebox">
-                        <view class="leftbox">
-                          <view class="whomember">邀请{{item.username}}成为{{item.gradename}}</view>
-                          <view class="time">{{item.createdate}}</view>
-                        </view>
-                        <view class="rightbox">
-                           <!-- 邀请{{item.username}}成为{{item.gradename}} -->
-                        </view>
-                      </view>
-         </block>
-         <view wx:if="{{reachBottomTip==true}}" class="reachbottom">到底啦</view>             
+      <!--有数据时-->
+      <block wx:for='{{homeList}}' wx:key="{{item.fundsflowid}}">
+        <view class="singleinvitebox">
+          <view class="leftbox">
+            <view class="whomember">邀请{{item.username}}成为{{item.gradename}}</view>
+            <view class="time">{{item.createdate}}</view>
+          </view>
+          <view class="rightbox">
+            <!-- 邀请{{item.username}}成为{{item.gradename}} -->
+          </view>
+        </view>
+      </block>
+      <view wx:if="{{reachBottomTip==true}}" class="reachbottom">到底啦</view>
     </view>
     <!--没邀请时显示-->
     <view class="nodata" wx:else>
       暂无数据
-    </view> 
+    </view>
   </view>
   <view class="btnbox">
-      <button open-type="share" hover-class="none" hover-stop-propagation="true">邀请好友</button>
+    <button open-type="share" hover-class="none" hover-stop-propagation="true">邀请好友</button>
   </view>
 </view>
