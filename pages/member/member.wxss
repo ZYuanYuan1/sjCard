@@ -1,0 +1,123 @@
+/* pages/member/member.wxss */
+page{
+  min-height:100%;
+  background-color:#f6f6f6;
+}
+.yellowbox{
+  height:200rpx;
+  background-color:#FFF985;
+  padding:36rpx 20rpx 36rpx 50rpx;
+  box-sizing: border-box;
+  display:flex;
+  align-items: center;
+}
+.peopleimg{
+  flex:0 0 120rpx;
+  height:120rpx;
+  margin-right: 20rpx;
+}
+.peopleimg image{
+  width:100%;
+  height:100%;
+  border-radius:50%;
+}
+.toprightbox{
+  flex:1;
+  display: flex
+}
+.rightupbox{
+  display:flex;
+  justify-content: space-between;
+}
+.arrowbox{
+  background-color:#333;
+  color:#fff;
+  border-radius:10rpx;
+  opacity:0.3;
+  width:126rpx;
+  text-align:center;
+  font-size:24rpx;
+  height:40rpx;
+  padding:6rpx 10rpx;
+
+}
+.arrowimg{
+  width:14rpx;
+  height:20rpx;
+  vertical-align:middle;
+  position:relative;
+  top:-3rpx;
+}
+.rightupbox text{
+  color:#333;
+font-size:32rpx;
+letter-spacing:2rpx;
+overflow:hidden;
+text-overflow:ellipsis;
+display:-webkit-box;
+-webkit-line-clamp:1;
+-webkit-box-orient:vertical;
+width:75%;
+}
+.rightdownbox{
+  display:flex;
+  margin-top:24rpx;
+}
+.memberlevel{
+  background-color:#fffac8;
+  color:#666;
+  text-align:center;
+  font-size:24rpx;
+  height:40rpx;
+  padding:6rpx 10rpx;
+  border-radius:10rpx;
+  /* width:148rpx; */
+ margin-right:10rpx;
+}
+.memberlevel image{
+  width:43rpx;
+  height:43rpx;
+  margin-right:10rpx;
+  vertical-align: middle;
+  position: relative;
+top: -2rpx;
+}
+view.cardscore{
+  width:162rpx;
+  margin-right:10rpx;
+}
+/*下方选项*/
+.upfourtions,.downthreeoptions{
+  margin-top:20rpx;
+}
+.singlelinebox{
+  display:flex;
+  justify-content: space-between;
+  padding-left:20rpx;
+  background-color:#fff;
+  border-bottom:2rpx solid #e8e8ed;
+  height:88rpx;
+  align-items: center;
+  font-size: 28rpx;
+  color:#333;
+}
+.upfourtions .singlelinebox:last-child,.downthreeoptions .singlelinebox:last-child{
+  border:none;
+}
+.iconbox image{
+  width:48rpx;
+  height:48rpx;
+  vertical-align: middle;
+  margin-right:24rpx;
+}
+.nextpageicon image{
+  width:14rpx;
+  height:24rpx;
+  margin-right:16rpx;
+}
+
+.linktime{
+  top:-13rpx;
+  font-size: 12px;
+  text-align: center;
+}

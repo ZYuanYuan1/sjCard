@@ -1,0 +1,55 @@
+/* pages/freeProtocol/freeProtocol.wxss */
+page{
+  min-height:100%;
+  background-color:#f6f6f6;
+}
+.protocol{
+  border: 1rpx solid darkgray;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+  font-size: 12px;
+  height: 500px;
+}
+
+.protocol scroll-view{
+   height: 500px;
+}
+.agree{
+  margin:10px; 
+  margin-top: -1px;
+  font-size: 12px;
+  height: 25px;
+  border: 1rpx solid darkgray;
+
+  background: #ffffff;
+display: flex;
+flex-direction:row;
+padding-top: 10rpx;
+padding-bottom: 10rpx;
+/**其中子view垂直居中显示*/
+align-items: center;
+}
+.chk{
+  margin: 5px;
+  zoom:60%;
+}
+.next{
+  margin:10px; 
+}
+
+.nextbtn{
+  color: white; 
+  background-color: #f5bf00; 
+  width:100%;
+}
+.title{
+  text-align: center;
+  color: red;
+  font-size: 32rpx;
+  margin-top: 10rpx;
+}
+.comont{
+  margin-left: 10rpx;
+  margin-right: 10rpx;
+}

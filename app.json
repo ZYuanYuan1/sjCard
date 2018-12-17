@@ -1,0 +1,79 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/comment/comment",
+    "pages/myorder/myorder",
+    "pages/commentAll/commentAll",
+    "pages/courseDetail/courseDetail",
+    "pages/scoreDetail/scoreDetail",
+    "pages/playGame_list/playGame_list",
+    "pages/address_add/address_add",
+    "pages/address/address",
+    "pages/orderEmpty/orderEmpty",
+    "pages/myshopping/myshopping",
+     "pages/playGame/playGame",
+    "pages/invite_bonus_intro/invite_bonus_intro",
+    "pages/invite_business_info/invite_business_info",
+    "pages/apply/apply",
+    "pages/myAccount/myAccount",
+    "pages/accountDetail/accountDetail",
+    "pages/dealDetail/dealDetail",
+    "pages/myAttention/myAttention",
+    "pages/creditScore/creditScore",
+    "pages/sureOrders/sureOrders",
+    "pages/memberPromote/memberPromote",
+    "pages/member/member",
+    "pages/playDetail/playDetail",
+    "pages/invite_bonus/invite_bonus",
+    "pages/myOrders/myOrders",
+    "pages/myTask/myTask",
+    "pages/lessonList/lessonList",
+    "pages/score_charge/score_charge",
+    "pages/cash_charge/cash_charge",
+    "pages/bindPhone/bindPhone",
+    "pages/cash_record/cash_record",
+    "pages/myInfo/myInfo",
+    "pages/conversion/conversion",
+    "pages/applyBusiness/applyBusiness",
+    "pages/payProtocol/payProtocol",
+    "pages/freeProtocol/freeProtocol",
+    "pages/reviewing/reviewing",
+    "pages/message/message",
+    "pages/payBusiness/payBusiness",
+    "pages/freeBusiness/freeBusiness",
+    "pages/deposit/deposit",
+    "pages/search/search"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#FFF985",
+    "navigationBarTitleText": "",
+    "enablePullDownRefresh": false,
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#959595",
+    "selectedColor": "#c2a961",
+    "borderStyle": "black",
+    "backgroundColor": "#f6f6f6",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "images/home_noselect.png",
+        "selectedIconPath": "images/home_selected.png",
+        "text": "赚赏金"
+      },
+      {
+        "pagePath": "pages/playGame_list/playGame_list",
+        "iconPath": "images/play_noselect.png",
+        "selectedIconPath": "images/play_selected.png",
+        "text": "花赏金"
+      },
+      {
+        "pagePath": "pages/member/member",
+        "iconPath": "images/my_noselect.png",
+        "selectedIconPath": "images/my_selected.png",
+        "text": "我的"
+      }
+    ]
+  }
+}

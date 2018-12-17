@@ -1,0 +1,156 @@
+<!--pages/scoreDetail/scoreDetail.wxml-->
+<import src="../../wxParse/wxParse.wxml" />
+<!-- 弹窗 -->
+<view class="page">
+  <!--顶部图片-->
+  <view class="topdetailimgbox"  bindtap='skip_lessonList'>
+    <image src="{{businessInfo.businesspic}}" binderror="errImg" data-err-img="{{businessInfo.businesspic}}"></image>
+  </view>
+  <view class="maindetailbigbox">
+    <!--标题与简介-->
+    <view>
+      <!--标题-->
+      <view class='model'>
+              <view class="taskheadtext taskheadtextThree" style='text-align:center;'>{{businessInfo.businessname}}</view>
+               <view class="taskitem taskiteTwo">
+                  <text class='left'>{{businessInfo.description}}</text>
+                <view class='right' style='flex:0 0 30%'>
+                  <view style="margin-right:40rpx;text-align:center;" bindtap="goShop">
+                     <image src='/images/shop.png' class='titleRightimg'></image>
+                     <view>店铺</view>
+                  </view>
+                  <view style='text-align:center' wx:if="{{saving==0}}" bindtap="save">
+                     <image class='titleRightimg' src='/images/attention.png'></image>
+                     <view>关注</view>
+                  </view>
+                  <view style='text-align:center'  wx:else  bindtap="save">
+                     <image class='titleRightimg' src='https://img.sahuanka.com/sjCard/images/shoucangblue.png'></image>
+                     <view>关注</view>
+                  </view>
+                </view>
+              </view>
+          </view>
+
+    <!-- 第二个 -->
+
+      <view class='model'>
+              <view class="taskheadtext taskheadtextThree" style='display:flex;font-size:28rpx;'>{{activityInfo.activityname}}</view>
+          <view>
+               <view class="taskitem" style='display:flex'>
+                  <text style='flex:0 0 75%;'>赏金：<text class="totalscore">Š {{activityInfo.amount}}</text> 沅</text>
+                  <view>
+                 <image src='/images/copy.png' class='shoppingImg'></image>
+                 <text style='font-size:24rpxcolor:#999999;'>剩余{{activityInfo.surpluscount}}人</text>
+              </view>
+              </view>
+          </view>
+          </view>
+    <!-- 第三个 -->
+            <view class='model'>
+              <view class="taskheadtext taskheadtextThree teskfont">任务时间：<text style='font-size24rpx;color:#333333'>{{activityInfo.shelftime}}</text></view>
+               <view class="taskitem">
+                  <text class='teskfont'>适合年龄：<text class="totalscore" style='font-size24rpx;color:#333333'>{{activityInfo.starage}}-{{activityInfo.endage}}周岁</text></text>
+              </view>
+          </view>
+
+    <!-- 第四个 -->
+      <view class='model' hidden='{{addrShow}}'>
+              <view class="taskheadtext taskheadtextThree" style='font-size:26rpx;color:#999999'>适用店铺({{addressLength}})</view>
+           <view class='taskitem'>
+               <view class='address'wx:for="{{addressList}}">
+                  <image src='/images/position.png' class='addressImg'></image>
+                  <view>{{item.province}}{{item.city}}{{item.district}}{{item.address}}</view>
+              </view>
+            </view>
+          </view>
+
+<!-- 第五个 -->
+      
+      <view class='model' style='border-bottom:none' hidden='{{commentShow}}'>
+              <view class="taskheadtext taskheadtextThree" style='display:flex'>
+                  <view class='dissLeft'>用户评价({{count}})</view>
+                  <view style='font-size:24rpx;color:#F5A623;align-items:center;' bindtap='commentAll'>
+                     <text>查看全部</text>
+                     <image style='width:22rpx;height:22rpx;margin-left:8rpx' src='/images/arrow.png'></image>
+                  </view>
+              </view>
+               <view class="taskitem" style='display:flex'>
+                   <image src='{{info.avatarUrl}}' class='dissCountleft'></image>
+                   <view style='display:flex:0 0 72%;line-height:20rpx;line-height:22px;width:68%;'>
+                        <view style='font-size:26rpx;color:#446889'>{{info.userName==null&&avatarUrl==null?'*****':info.userName}}</view>
+                        <view style='font-size:20rpx'><text>打分 </text>
+                        <image wx:for="{{starImg}}"src='{{item}}' class='star' style="margin-right:4rpx"></image></view>
+                        <view style='font-size:28rpx'>{{info.content}}</view>
+                        <view style='margin-top:22rpx'><image wx:for="{{info.imgList}}" class='dissCenterimg' src='{{item}}'></image>
+                        </view>
+                   </view>
+                   <view style='font-size:24rpx;color:#999999;flex:0 0 16%'>{{createDate}}</view>
+              </view>
+          </view>
+          <!--图文-富文本-->
+            <view class='detail'>一详情一</view>
+          <view class="introinfolayer">
+              <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+          </view>
+      </view>
+  </view>
+   <!--底部按钮-->
+  <view class="bottombox">
+      <view class="bottomleftbox">
+          <button class="pagesharebtn" bindtap='changIndex'>首页</button>
+          <!-- <image src="/images/share.png"></image> -->
+      </view>
+      <view class="now-buy" bindtap="showDialogBtn">
+        领取任务挣赏金
+      </view>
+  </view>
+  <!-- <button class="show-btn" bindtap="showDialogBtn">会员等级低弹窗（不能领取任务）</button> -->
+    <!--会员等级低弹窗（不能领取任务）弹窗-->
+    <view class="modal-mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+    <view class="modal-dialog detailmodalbox" wx:if="{{showModal}}">
+      <view class="modal-content detailmodal">
+         <image src="https://img.sahuanka.com/sjCard/images/alert.png" class="alertimg"></image>
+         <view class="alerttext">
+            您的会员等级太低，无法领取该任务
+            <text>需要去升级更高会员权益</text> 
+         </view>
+      </view>
+      <view class="modal-footer">
+        <view class="btn-cancel" bindtap="onCancel" data-status="cancel">取消</view>
+        <view class="btn-confirm" bindtap="onConfirm" data-status="confirm">去升级</view>
+      </view>
+    </view> 
+    <!--正常领取任务弹窗弹窗-->
+    <view class="modal-mask" catchtouchmove="preventTouchMove" wx:if="{{showModalTake}}"></view>
+    <view class="modal-dialog detailmodalbox" wx:if="{{showModalTake}}">
+      <view class="modal-content detailmodal">
+         <image src="https://img.sahuanka.com/sjCard/images/task.png" class="alertimg"></image>
+         <view class="alerttext" style='width:420rpx'>
+            <view class='makesure' style='height:auto;width:100%;line-height:48rpx'>请确认您符合该悬赏任务中的要求，包括但不限于孩子年龄、住址、体验次数等如不符合条件，请与商家提前协商，否则商家有权拒绝支付赏金给您。</view> 
+            <view>是否确定领取任务?</view> 
+         </view>
+      </view>
+      <view class="modal-footer">
+        <view class="btn-cancel" bindtap="onCancelTake" data-status="cancel">取消</view>
+        <view class="btn-confirm" bindtap="onConfirmTake" data-status="confirm">确定</view>
+      </view>
+    </view> 
+    <!--信用分低弹窗（不能领取任务）弹窗-->
+    <view class="modal-mask" catchtouchmove="preventTouchMove" wx:if="{{showModalCredit}}"></view>
+    <view class="modal-dialog detailmodalbox" wx:if="{{showModalCredit}}">
+      <view class="modal-content detailmodal">
+         <image src="https://img.sahuanka.com/sjCard/images/alert.png" class="alertimg"></image>
+         <view class="alerttext">
+            您的会员等级太低，无法领取该任务
+            <text>需要去升级更高会员权益</text> 
+            <view style='font-size:20rpx'>（您可以领取39元以下任务）</view>
+         </view>
+      </view>
+      <view class="modal-footer">
+        <view class="btn-cancel" bindtap="onCancelCredit" data-status="cancel">取消</view>
+        <view class="btn-confirm" bindtap="onConfirm" data-status="confirm">去升级</view>
+      </view>
+    </view> 
+</view>
+<!--绑定手机号弹窗-->
+<bindphone isShow="{{showPhoneModal}}" bindphone="getBindInfo"></bindphone>

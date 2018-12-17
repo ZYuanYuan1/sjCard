@@ -1,0 +1,148 @@
+<!--pages/sureOrders/sureOrders.wxml-->
+<view class="page">
+  <!--详情传过来的订单-->
+  <view wx:if="{{waystype==0}}">
+      <view class="orderinfobox">
+        <view class="orderimgbox">
+          <image src="{{orderInfo.orderpic?orderInfo.orderpic:'https://img.sahuanka.com/sjCard/images/defaultImg.png'}}" binderror="errImgDetail" data-err-img="{{orderInfo.orderpic}}"></image>
+        </view>
+        <view class="introtextbox">
+          <view class="orderheadline">{{orderInfo.activityname}}</view>
+          <view> </view> 
+        </view>
+    </view>
+    <view class="computemoney">
+        <view class='moneylineone'>需扣除：<text>{{orderInfo.integral?orderInfo.integral:'0'}}</text>沅</view>
+        <view class='moneylinetwo'>还需付：<text>￥{{orderInfo.amount?orderInfo.amount:'0.00'}}</text></view>
+    </view>
+     <view class="namebox">
+          <textarea bindinput="remark" placeholder="请填写收货地址!" />
+      </view>
+    <!--底部按钮-->
+    <view class="btnbox">
+        <button bindtap='showDialogBtn' data-order-id="{{orderInfo.orderid}}" data-order-number="{{orderInfo.orderno}}"  data-order-type="{{orderInfo.ordertype}}"    bindtap='wxpay'>确定购买</button>
+    </view>
+  </view>
+  <!--详情传过来的订单-->
+  <view wx:if="{{waystype==7}}">
+      <view class="orderinfobox">
+        <view class="orderimgbox">
+          <image src="{{orderInfo.orderpic?orderInfo.orderpic:'https://img.sahuanka.com/sjCard/images/defaultImg.png'}}" binderror="errImgDetail" data-err-img="{{orderInfo.orderpic}}"></image>
+        </view>
+        <view class="introtextbox">
+          <view class="orderheadline">{{orderInfo.activityname}}</view>
+          <view> </view> 
+        </view>
+    </view>
+    <view class="computemoney">
+        <view class='moneylineone'>需扣除：<text>{{orderInfo.integral?orderInfo.integral:'0'}}</text>沅</view>
+        <view class='moneylinetwo'>还需付：<text>￥{{orderInfo.amount?orderInfo.amount:'0.00'}}</text></view>
+    </view>
+    <view class="namebox">
+          <text><text class="star">* </text>姓名 :</text>
+          <input type="text" bindinput='orderName' placeholder='姓名'/>
+      </view>
+      <view class="namebox">
+          <text><text class="star">* </text>手机 :</text>
+          <input type="number" bindinput='orderPhone' placeholder='手机'/>
+      </view>
+      <view class="namebox">
+          <text><text class="star">* </text>身份证 :</text>
+          <input type="text" bindinput='orderCard' placeholder='身份证'/>
+      </view>
+       <view class="namebox">
+           <picker mode="date" value="{{orderDate}}" start="2018-07-01" end="2037-07-01" bindchange="orderDate">
+            <view class="picker">
+              <text class="star">* </text>出行日期: {{orderDate}}
+            </view>
+          </picker>
+      </view>
+      <view class="namebox">
+          <textarea bindinput="remark" placeholder="备注" />
+      </view>
+
+
+    <!--底部按钮-->
+    <view class="btnbox">
+        <button bindtap='showDialogBtn' data-order-id="{{orderInfo.orderid}}" data-order-number="{{orderInfo.orderno}}" data-order-type="{{orderInfo.ordertype}}" bindtap='wxpay'>确定购买</button>
+    </view>
+  </view>
+  <!--信用分和会员传过来的订单-->
+  <view wx:if="{{waystype==1}}">
+      <view class="orderinfobox">
+        <view class="orderimgbox">
+          <image src="https://img.sahuanka.com/sjCard/images/defaultImg.png"></image>
+        </view>
+        <view class="introtextbox">
+          <view class="orderheadline">{{creditOrderInfo.activityname}}</view>
+          <view> </view> 
+        </view>
+      </view>
+      <view class="computemoney">
+          <view class='moneylineone'>需扣除：<text>{{creditOrderInfo.integral?creditOrderInfo.integral:'0'}}</text> 积分</view>
+          <view class='moneylinetwo'>还需付：<text>￥{{creditOrderInfo.amount?creditOrderInfo.amount:'0.00'}}</text></view>
+      </view>
+      <!--会员卡订单-->
+          <view wx:if="{{creditOrderInfo.ordertype==2}}" class='maintext'>
+          <text>温馨提示：</text> 
+            <view>会员卡购买及升级不能用赏金抵用</view>
+          </view>
+        <!--底部按钮-->
+      <view class="btnbox">
+        <button bindtap='showDialogBtn' data-order-id="{{creditOrderInfo.orderid}}" data-order-number="{{creditOrderInfo.orderno}}" bindtap='wxpay'>确定购买         </button>
+        
+      </view>
+  </view>
+  <!--订单-"去支付"按钮传过来的订单-->
+  <view wx:if="{{waystype==2}}">
+      <view class="orderinfobox">
+          <view class="orderimgbox">
+            <image src="{{fromMyOrder.orderpic?fromMyOrder.orderpic:'https://img.sahuanka.com/sjCard/images/defaultImg.png'}}" binderror="errImg" data-err-img="{{fromMyOrder.orderpic}}"></image>
+          </view>
+          <view class="introtextbox">
+            <view class="orderheadline">{{fromMyOrder.activityname}}</view>
+            <view> </view> 
+          </view>
+      </view>
+      <view class="computemoney">
+          <view class='moneylineone'>需扣除：<text>{{fromMyOrder.integral?fromMyOrder.integral:'0'}}</text> 积分</view>
+          <view class='moneylinetwo'>还需付：<text>￥{{fromMyOrder.amount?fromMyOrder.amount:'0.00'}}</text></view>
+      </view>
+       <!--底部按钮-->
+      <view class="btnbox">
+        <button data-order-id="{{fromMyOrder.orderid}}" data-order-number="{{fromMyOrder.orderno}}" bindtap='wxpay'>确定购买</button>
+      </view>
+  </view>
+  <!--支付弹框-->
+   <!-- <view class="modal-mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+   <view class="modal-dialog" wx:if="{{showModal}}">
+      <view class="modal-title">
+          <view class="closeicon" bindtap="onCancel"><image src="/images/closeicon.png"></image></view>
+          <view class="titleright">请输入支付密码</view>
+      </view>
+      <view class="modal-content">
+         <view class="hosthead">一卡通平台商户</view>
+         <view class="moneytext">￥<text>207.00</text></view>
+         <view class="bankbox">
+          <image class="bankminicon" src="/images/daiding.jpg"></image>
+          <view><text>招商银行信用卡</text>(<text>2984</text>)</view>
+          <image class="rightminicon" src="/images/right_arrows.png"></image>
+         </view>
+         <paySix 
+          bindvalueSix="valueSix" 
+          input_value="{{inputData.input_value}}" 
+          value_length="{{inputData.value_length}}" 
+          isNext="{{inputData.isNext}}" 
+          get_focus="{{inputData.get_focus}}" 
+          focus_class="{{inputData.focus_class}}" 
+          value_num="{{inputData.value_num}}"
+          height="{{inputData.height}}" 
+          width="{{inputData.width}}" 
+          see="{{inputData.see}}" 
+          interval="{{inputData.interval}}">
+          </paySix>
+      </view>
+   </view>  -->
+   <!--绑定手机号弹窗-->
+   <bindphone isShow="{{showPhoneModal}}" bindphone="getBindInfo"></bindphone>
+</view>

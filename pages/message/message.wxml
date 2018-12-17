@@ -1,0 +1,22 @@
+<!--pages/message/message.wxml-->
+<view class='page'>
+ <view wx:if="{{homeList.length>0}}">
+  <view class='row' wx:for='{{homeList}}' wx:key="{{item.messageid}}">
+    <view class='date'>
+      <label>{{item.createtime}}</label>
+    </view>
+      <view class='textValue'>
+        <view class='title'>
+          <image class='iconbox' src="https://img.sahuanka.com/sjCard/images/orders.png"></image>
+          <label class='labelvalue'>{{item.title}}</label>
+        </view>
+        <image src="https://img.sahuanka.com/sjCard/images/Line.png" class="alertimg line"></image>
+        <view class='commont'>{{item.message}}</view>
+      </view>
+  </view>
+  <view wx:if="{{reachBottomTip==true}}" class="reachbottom">到底啦</view>
+</view>
+  <view class="nodata" wx:else>
+      暂无数据
+    </view> 
+</view>

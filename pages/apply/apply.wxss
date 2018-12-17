@@ -1,0 +1,53 @@
+/* pages/apply/apply.wxss */
+.namebox{
+  /* height:80rpx; */
+  padding:0rpx 30rpx;
+  font-size:28rpx;
+  color:#333;
+  line-height:80rpx;
+  border-bottom:2rpx solid #ddd;
+}
+.namebox input{
+  display:inline-block;
+  /* height:100%; */
+  vertical-align:middle;
+  width:66%;
+  padding:0;
+}
+.namebox input.firstinput{
+  width:80%;
+}
+.star{
+  color:#e80000;
+}
+/*底部按钮*/
+.btnbox{
+  text-align:center;
+  margin-top:50rpx;
+}
+.btnbox button{
+  width:90%;
+background-color:#f5bf00;
+color:#fff;
+font-size:38rpx;
+letter-spacing:4rpx;
+}
+.introapply{
+  padding:30rpx;
+  font-size:28rpx;
+}
+.maintext{
+  padding:0rpx 30rpx;
+  color:#333;
+  line-height:50rpx;
+}
+.maintext view{
+  font-size:28rpx;
+  text-indent: 56rpx;
+}
+.maintext text{
+  font-size:32rpx;
+}
+.alerttext{
+  text-align: center;
+}

@@ -1,0 +1,201 @@
+<!--pages/myTask/myTask.wxml-->
+<view class="page">
+    <view class="page__bd">
+        <view class="weui-tab">
+            <view class="weui-navbar nav_top">
+                <block wx:for="{{tabs}}" wx:key="*this">
+                    <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+                        <view class="weui-navbar__title">{{item}}</view>
+                    </view>
+                </block>
+                <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+            </view>
+            <view class="weui-tab__panel">
+                <!--全部选项卡-->
+                <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
+                    <view class="order-outterlayer">
+                      <block wx:for="{{taskList}}" wx:key="{{item.orderid}}">
+                          <!--待参与-->
+                          <view class="order-singlebox" wx:if="{{item.state==1}}"  >
+                              <view class="orderimgbox">
+                                <image src="{{item.orderpic?item.orderpic:'https://img.sahuanka.com/sjCard/images/defaultImg.png'}}"  data-index="{{index}}" binderror="errImg" data-err-img="taskList[{{index}}].orderpic" bindtap='skip_coreDetail' data-business-id="{{item.businessactivityid}}"></image>
+                              </view>
+                              <view class="orderdetailbox">
+                                <view class="orderrightupbox" >
+                                  <view class="upheadline" bindtap='skip_coreDetail' data-business-id="{{item.businessactivityid}}">{{item.activityname}}</view>
+                                  <text class="rightstatus" bindtap="showDialogCancelTask"  data-order-number="{{item.orderno}}">取消</text>
+                                </view>
+                                <view class="orderrightdownbox">
+                                  <view bindtap='skip_coreDetail'>任务时间：<text>{{item.completedate}}</text></view>
+                                  <view><button bindtap="showDialogBtn" data-qrcode-url="{{item.qrcode}}" data-order-number="{{item.orderno}}">电子券</button></view>
+                                </view>
+                              </view>
+                          </view>
+                          <!--未参与-->
+                          <view class="order-singlebox" wx:elif="{{item.state==8}}" >
+                              <view class="orderimgbox">
+                                <image src="{{item.orderpic?item.orderpic:'https://img.sahuanka.com/sjCard/images/defaultImg.png'}}"  data-index="{{index}}" binderror="errImg" data-err-img="taskList[{{index}}].orderpic"  bindtap='skip_coreDetail' data-business-id="{{item.businessactivityid}}"></image>
+                              </view>
+                              <view class="orderdetailbox"  bindtap='skip_coreDetail' data-business-id="{{item.businessactivityid}}">
+                                <view class="orderrightupbox">
+                                  <view class="upheadline">{{item.activityname}}</view>
+                                  <text class="rightstatus">未参与</text>
+                                </view>
+                                <view class="orderrightdownbox">
+                                  <view>任务时间：<text>{{item.completedate}}</text></view>
+                                </view>
+                              </view>
+                          </view>
+                          <!--已参与-->
+                          <view class="order-singlebox" wx:else >
+                                <view class="orderimgbox">
+                                  <image src="{{item.orderpic?item.orderpic:'https://img.sahuanka.com/sjCard/images/defaultImg.png'}}"  data-index="{{index}}" binderror="errImg" data-err-img="taskList[{{index}}].orderpic"  bindtap='skip_coreDetail' data-business-id="{{item.businessactivityid}}"></image>
+                                </view>
+                                <view class="orderdetailbox"  bindtap='skip_coreDetail' data-business-id="{{item.businessactivityid}}">
+                                  <view class="orderrightupbox">
+                                    <view class="upheadline">{{item.activityname}}</view>
+                                    <text class="rightstatus">{{item.statestr}}</text>
+                                  </view>
+                                  <view class="orderrightdownbox">
+                                    <view>任务时间：<text>{{item.completedate}}</text></view>
+                                  </view>
+                                </view>
+                          </view>
+                      </block>                          
+                    </view>
+                </view>
+                <!--待参与-选项卡-->
+                <view class="weui-tab__content" hidden="{{activeIndex != 1}}" >
+                    <view class="order-outterlayer">
+                      <!--待参与-->
+                      <block wx:for="{{taskList}}" wx:key="{{item.orderid}}">
+                        <view class="order-singlebox" wx:if="{{item.state==1}}">
+                            <view class="orderimgbox">
+                              <image src="{{item.orderpic?item.orderpic:'https://img.sahuanka.com/sjCard/images/defaultImg.png'}}"  data-index="{{index}}" binderror="errImg" data-err-img="taskList[{{index}}].orderpic"  bindtap='skip_coreDetail' data-business-id="{{item.businessactivityid}}"></image>
+                            </view>
+                            <view class="orderdetailbox">
+                              <view class="orderrightupbox"  bindtap='skip_coreDetail' data-business-id="{{item.businessactivityid}}">
+                                <view class="upheadline">{{item.activityname}}</view>
+                                <text class="rightstatus">待参与</text>
+                              </view>
+                              <view class="orderrightdownbox">
+                                <view>任务时间：<text>{{item.completedate}}</text></view>
+                                <view><button bindtap="showDialogBtn" data-qrcode-url="{{item.qrcode}}" data-order-number="{{item.orderno}}">电子券</button></view>
+                              </view>
+                            </view>
+                        </view>
+                      </block>                     
+                    </view>
+                </view>
+                <!--未参与-选项卡-->
+                <view class="weui-tab__content" hidden="{{activeIndex != 2}}" >
+                    <view class="order-outterlayer">
+                        <!--未参与-->
+                        <block wx:for="{{taskList}}" wx:key="{{item.orderid}}">
+                          <view class="order-singlebox" wx:if="{{item.state==8}}"  bindtap='skip_coreDetail' data-business-id="{{item.businessactivityid}}">
+                              <view class="orderimgbox">
+                                <image src="{{item.orderpic?item.orderpic:'https://img.sahuanka.com/sjCard/images/defaultImg.png'}}"  data-index="{{index}}" binderror="errImg" data-err-img="taskList[{{index}}].orderpic"></image>
+                              </view>
+                              <view class="orderdetailbox">
+                                <view class="orderrightupbox">
+                                  <view class="upheadline">{{item.activityname}}</view>
+                                  <text class="rightstatus">未参与</text>
+                                </view>
+                                <view class="orderrightdownbox">
+                                  <view>任务时间：<text>{{item.completedate}}</text></view>
+                                </view>
+                              </view>
+                          </view>
+                        </block>                    
+                    </view>
+                </view>
+
+                <!-- 待评价-选项卡 -->
+                <view class="weui-tab__content" hidden="{{activeIndex != 3}}" >
+                    <view class="order-outterlayer">
+                      <!--待评价-->
+                      <block wx:for="{{taskList}}" wx:key="{{item.orderid}}">
+                        <view class="order-singlebox" wx:if="{{item.state==7}}">
+                            <view class="orderimgbox">
+                              <image src="{{item.orderpic?item.orderpic:'https://img.sahuanka.com/sjCard/images/defaultImg.png'}}"  data-index="{{index}}" binderror="errImg" data-err-img="taskList[{{index}}].orderpic"  bindtap='skip_coreDetail' data-business-id="{{item.businessactivityid}}"></image>
+                            </view>
+                            <view class="orderdetailbox">
+                              <view class="orderrightupbox"  bindtap='skip_coreDetail' data-business-id="{{item.businessactivityid}}">
+                                <view class="upheadline">{{item.activityname}}</view>
+                                <text class="rightstatus">{{item.statestr}}</text>
+                              </view>
+                              <view class="orderrightdownbox">
+                                <view>任务时间：<text>{{item.completedate}}</text></view>
+                                <view  hidden='{{item.state==9?true:false}}'><button bindtap="pop_evaluate"  data-order-id="{{item.orderid}}" data-business-activity-id="{{item.businessactivityid}}">评价</button></view>
+                              </view>
+                            </view>
+                        </view>
+                      </block>                     
+                    </view>
+                </view>
+               <!-- 已评价 -->
+<!-- 
+               <view class="weui-tab__content" hidden="{{activeIndex != 3}}" >
+                    <view class="order-outterlayer">
+                      <!--待评价-->
+                      <!-- <block wx:for="{{taskList}}" wx:key="{{item.orderid}}">
+                        <view class="order-singlebox" wx:if="{{item.state==9}}">
+                            <view class="orderimgbox">
+                              <image src="{{item.orderpic?item.orderpic:'https://img.sahuanka.com/sjCard/images/defaultImg.png'}}"  data-index="{{index}}" binderror="errImg" data-err-img="taskList[{{index}}].orderpic"  bindtap='skip_coreDetail' data-business-id="{{item.businessactivityid}}"></image>
+                            </view>
+                            <view class="orderdetailbox">
+                              <view class="orderrightupbox"  bindtap='skip_coreDetail' data-business-id="{{item.businessactivityid}}">
+                                <view class="upheadline">{{item.activityname}}</view>
+                                <text class="rightstatus"></text>
+                              </view>
+                              <view class="orderrightdownbox">
+                                <view>任务时间：<text>{{item.completedate}}</text></view>
+                                <view><button bindtap="pop_evaluate"  data-order-id="{{item.orderid}}" data-business-activity-id="{{item.businessactivityid}}">评价</button></view>
+                              </view>
+                            </view>
+                        </view>
+                      </block>                     
+                    </view>
+                </view> --> 
+
+            </view>
+        </view>
+    </view>
+</view>
+<!--绑定手机号弹窗-->
+<bindphone isShow="{{showPhoneModal}}" bindphone="getBindInfo"></bindphone>
+<!--电子券弹框-->
+<view class="modal-mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+<view class="modal-dialog" wx:if="{{showModal}}">
+      <view class="modal-title">
+          <view class="closeicon" catchtouchstart="onCancelCard"><image src="https://img.sahuanka.com/sjCard/images/closeicon.png"></image></view>
+          <view class="titleright">电子券</view>
+      </view>
+      <view class="modal-content">
+         <view class="alerttext">
+            电子券编号:<text>{{orderNo}}</text>
+         </view>
+         <view class="container-box">
+            <view class="img-box">
+                <canvas hidden="{{canvasHidden}}" canvas-id="mycanvas" style="width:250rpx;height:250rpx;margin-left:90rpx;"/>
+            </view>
+        </view>
+        <view hidden="{{maskHidden}}" class="mask"></view>
+        <view class="canvas-box"></view>
+      </view>
+</view> 
+
+<!--取消任务弹窗-->
+    <view class="modal-mask" catchtouchmove="preventTouchMove" wx:if="{{showCancelModal}}"></view>
+    <view class="modal-dialog detailmodalbox" wx:if="{{showCancelModal}}">
+      <view class="modal-content detailmodal">
+         <image src="https://img.sahuanka.com/sjCard/images/alert.png" class="alertimg"></image>
+         <view class="alerttext">
+            您确定要取消任务吗？
+         </view>
+      </view>
+      <view class="modal-footer">
+        <view class="btn-cancel" bindtap="onCancelTask" data-status="cancel">关闭</view>
+        <view class="btn-confirm" bindtap="onConfirm" data-status="confirm" data-order-no='{{orderNo}}'>去取消</view>
+      </view>
+    </view> 

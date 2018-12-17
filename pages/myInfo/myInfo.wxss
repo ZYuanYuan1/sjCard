@@ -1,0 +1,111 @@
+.userInfo-cell {
+    background-color: white;
+    height: 45px;
+    display:flex;
+    align-items: center;
+    flex-direction: row;
+    margin-top: 1px;
+}
+.userInfo-cell-img {
+    height: 65px;
+}
+.userInfo-cell-label {
+    font-size: 14px;
+    text-align: left;
+    flex-grow:1;
+    margin-left: 12px;
+}
+.userInfo-cell-sublabel {
+    font-size: 14px;
+    text-align: left;
+    padding-right: 24px;
+    color:#adadad;
+}
+.userInfo-cell-icon {
+    height: 29px;
+    width: 29px;
+    margin-left: 12px;
+}
+
+.userInfo-cell-arrow {
+    position:relative;
+    width: 8px;
+    height: 13px;
+    right: 12px;
+}
+.contact-button {
+    padding-left: 12px;
+}
+
+.contact-button-text {
+    font-size: 14px;
+    flex-grow:1;
+    padding-left: 0px;
+}
+.peopleimg{
+  flex:0 0 120rpx;
+  height:120rpx;
+  margin-right: 60rpx;
+}
+.peopleimg image{
+  width:100%;
+  height:100%;
+  border-radius:50%;
+}
+/*底部按钮*/
+/* .btnbox{
+  position:fixed;
+  bottom:2%;
+  width:100%;
+
+} */
+/* .btnbox button{
+  width:90%;
+background-color:#f5bf00;
+color:#fff;
+font-size:38rpx;
+letter-spacing:4rpx;
+} */
+/* .page:after{
+  content:"";
+  display:block;
+  clear:both;
+  height:150rpx;
+} */
+.modifyoutter{
+  padding:20rpx 24rpx;
+  font-size:28rpx;
+  display:flex;
+justify-content:space-between;
+
+}
+view.surebtn{
+  flex:0 0 70rpx;
+  text-align:right;
+}
+.nameVal{
+  flex:1;
+  border:2rpx solid #ddd;
+  border-radius:30rpx;
+  padding-left:10rpx;
+  box-sizing:border-box;
+  vertical-align:middle;
+  height:80rpx;
+}
+
+.singlelinebox{
+  display:flex;
+  justify-content: space-between;
+  padding-left:20rpx;
+  background-color:#fff;
+  border-bottom:2rpx solid #e8e8ed;
+  align-items: center;
+  font-size: 28rpx;
+  color:#333;
+}
+
+.nextpageicon image{
+  width:14rpx;
+  height:24rpx;
+  margin-right:16rpx;
+}

@@ -1,0 +1,91 @@
+/* pages/myshopping/myshopping.wxss */
+page{
+  background: #F4F4F4
+}
+/* 尾部 */
+.footer{
+  display:flex;
+position:fixed;
+bottom:0;
+height:96rpx;
+width:100%;
+background:#ffffff;
+align-items:center;
+padding:0 11px 0 15px;
+}
+.fontTwo{
+  font-size: 26rpx
+}
+.fontThree{
+  margin-left: 20rpx
+}
+.count{
+  font-size:26rpx;
+  color:#ffffff;
+  background:#F5BF00;
+  width:200rpx;
+  height:76rpx;
+  border-radius:48rpx;
+  text-align:center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.content{
+  padding:20rpx 22rpx
+}
+/* 我的订单 */
+.myorderOne{
+  background: #ffffff;
+  width: 100%;
+  height: 200rpx;
+  border-radius: 20rpx;
+  margin-bottom: 22rpx
+}
+.account{
+   font-size:20rpx;
+   text-align:center;
+   border:2rpx solid #cecece;
+   width: 40rpx;
+   line-height:39rpx;
+   height: 36rpx
+}
+.myorderOne{
+  background:#ffffff;
+  height:100%;
+  border-radius:20rpx;
+  padding:20rpx 22rpx;
+  width: 662rpx
+}
+.store{
+  width:28rpx;
+  height:28rpx;
+}
+.myorderfont{
+  font-size:24rpx;
+  color:#515151;
+  display:inline-block;
+}
+.orderArrow{
+  width:10rpx;
+  height:18rpx;
+}
+.orderImg{
+  width:160rpx;
+  height:160rpx;
+  background:red;
+}
+.orderMargin{
+  margin-right:30rpx;
+}
+.headerMargin{
+  margin-right:16rpx;
+}
+.choose{
+  width: 30rpx;
+  height: 30rpx;
+  border-radius: 50%;
+  border:2rpx solid #C6C6C6;
+  display:inline-block;
+
+}

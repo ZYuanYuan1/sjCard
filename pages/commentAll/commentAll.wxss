@@ -1,0 +1,25 @@
+/* pages/commentAll/commentAll.wxss */
+@import "../../wxParse/wxParse.wxss";
+@import "/pages/scoreDetail/scoreDetail.wxss";
+page{
+  background: #F8F8F8
+}
+.dissCountleft{
+border-radius:50%;
+width:80rpx;
+height:80rpx;
+margin-right:16rpx;
+}
+.dissCenterimg{
+  width: 150rpx;
+  height: 150rpx
+}
+.titleRightimg{
+  width: 32rpx;
+  height: 32rpx
+}
+.star{
+  width:20rpx;
+  height:20rpx;
+  margin-right:4rpx;
+}

@@ -1,0 +1,17 @@
+/* pages/orderEmpty/orderEmpty.wxss */
+.contanier{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 26rpx;
+  color: #888888;
+  width: 750rpx;
+  height: 500rpx
+}
+.content{
+  text-align: center
+}
+.content image{
+  width: 200rpx;
+  height: 200rpx;
+}

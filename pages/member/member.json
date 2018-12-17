@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "赏金宝贝",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "bindphone": "../../components/bindPhone/bindPhone"
+  }
+}

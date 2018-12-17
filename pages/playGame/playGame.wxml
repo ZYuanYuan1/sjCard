@@ -1,0 +1,34 @@
+<!--pages/playGame/playGame.wxml-->
+<view>
+  <!--搜索框-->
+  <view class="searchlayer">
+      <!--搜索框和按钮-->
+    <view class="inputbox">
+            <image src="https://img.sahuanka.com/sjCard/images/searchLine@3x.png" class="seachicon"></image>
+            <input placeholder="搜学、玩、购" type="text" confirm-type="search" class="searchbox" placeholder-style="color:#cccfce;letter-spacing:1px;" bindconfirm="valDone" value="{{searchVal}}"/>
+    </view>
+  </view>
+  <!--主体部分-->
+  <view class="mainbiglayer">
+    <view class="havedatalayer" wx:if="{{homeList.length>0}}">
+        <block wx:for='{{homeList}}' wx:key="{{item.businessid}}">
+          <view class="singlebigbox" bindtap='skip_playDetail' data-business-id="{{item.businessactivityid}}"  data-activity-type="{{item.activitytype}}">
+            <view class="detailImgbox">
+              <view class="singleimgbox"><image src="{{item.activitypic}}" data-index="{{index}}" binderror="errImg" data-err-img="homeList[{{index}}].activitypic"></image></view>
+              <view class="labelInt">Š <text>{{item.amount}}</text> 沅</view>
+            </view>
+            <view>
+              <view class="headmain">{{item.activityname}}</view>
+              <view class="introtext">{{item.description}}</view>
+              <view wx:if="{{item.tags.length>0}}">
+                <text class="labeltext" wx:for="{{item.tags}}" wx:key="*this" wx:for-item="tagitem">{{tagitem}}</text>
+              </view>
+               
+            </view>
+          </view>
+        </block>
+        <view wx:if="{{reachBottomTip==true}}" class="reachbottom">到底啦</view>
+    </view>
+    <view class="nodata" wx:else>暂无数据</view>
+  </view>
+</view>

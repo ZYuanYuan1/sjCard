@@ -1,0 +1,7 @@
+<!--pages/orderEmpty/orderEmpty.wxml-->
+<view class='contanier'>
+  <view class='content'>
+   <image src='/images/gwc.png'></image>
+   <view>购物车竟然是空的/(ㄒoㄒ)/~~</view>
+  </view>
+</view>

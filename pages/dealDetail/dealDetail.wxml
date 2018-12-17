@@ -1,0 +1,23 @@
+<!--pages/dealDetail/dealDetail.wxml--> 
+<view class="page">
+  <view wx:if="{{homeList.length>0}}">
+    <block wx:for='{{homeList}}' wx:key="{{item.fundsflowid}}">
+      <view class="singledealbox">
+        <view class="dealleftbox">
+          <text>{{item.description}}</text>
+          <view>{{item.createdate}}</view>
+        </view>
+        <view class="dealrightbox">
+          {{item.amount?item.amount:'0'}} 沅
+        </view>
+      </view>
+    </block>
+    <view wx:if="{{reachBottomTip==true}}" class="reachbottom">到底啦</view> 
+  </view>
+  <!--当没有交易时显示-->
+  <view class="nodata" wx:else>
+      暂无数据
+  </view> 
+</view>
+<!--绑定手机号弹窗-->
+ <bindphone isShow="{{showPhoneModal}}" bindphone="getBindInfo"></bindphone> 

@@ -1,0 +1,22 @@
+<!--pages/applyBusiness/applyBusiness.wxml-->
+<view class="page">
+    <view class="detailbg">
+      <image src="/images/Rectangle@3x.png"></image>
+      <view class="allinbox">
+        <view class="box1" bindtap='skip_payProtocol'>
+            <text>我是付费商家</text>
+        </view>
+      </view>
+    </view>
+    <view class="detailbg2" bindtap='skip_freeProtocol'>
+      <image src="/images/RectangleCopy@3x.png"></image>
+      <view class="allinbox">
+        <view class="box1">
+
+            我是试用商家
+            
+        </view>
+     
+      </view>
+    </view>
+</view>

@@ -1,0 +1,44 @@
+<!--pages/myshopping/myshopping.wxml-->
+<view class='contanier'>
+   <view class='content'>
+       <view class="myorderOne" wx:for='{{myorder}}'>
+          <view>
+             <view class='choose orderMargin'></view>
+             <image class="store headerMargin" src="https://img.sahuanka.com/sjCard/images/shop.png"></image>
+             <view class='myorderfont headerMargin'>{{item.title}}</view>
+             <image  class=" orderArrow"src='/images/arrow11.png'></image>
+          </view>
+          <view style='display:flex;align-items:center;margin-bottom:30rpx' wx:for='{{item.mycontet}}'>
+             <image class='choose orderMargin'></image>
+             
+             <image src="" class="orderImg orderMargin"></image>
+             <view class='orderMargin' style='margin-top:-52rpx;width:242rpx;'>
+               <view style='font-size:22rpx;'>{{item.tittle}}</view>
+               <view style='font-size:24rpx;color:#D0021B;'> Š {{item.money}} 沅</view>
+             </view>
+             <view class='account' style='border-radius:8rpx 0 0  8rpx'>+</view>
+             <view class='account'>6</view>
+             <view class='account' style='border-radius:0 8rpx 8rpx  0'>-</view>
+              </view>
+          </view>
+       </view>
+
+   <view class='footer'>
+       <view style='display:flex;flex:0 0 42%'>
+          <view class='choose'></view>
+          <text class='fontOne fontThree' style='color:#666666'>已经选择(2)</text>
+       </view>
+       <view class='fontTwo'>
+           <text>合计：</text>
+           <text class="fontThree" style='color:#D0021B;'>654沅</text>
+       </view>
+       <view class='fontTwo fontThree count' style='color:#ffffff'>
+            结算
+       </view>
+   </view>
+</view>
+
+
+
+
+

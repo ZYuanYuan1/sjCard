@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "余额转撒欢宝",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "bindphone": "../../components/bindPhone/bindPhone"
+  }
+  
+}

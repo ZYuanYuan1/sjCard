@@ -1,0 +1,117 @@
+<!--pages/index/index.wxml-->
+<wxs module="filters" src="../../utils/addmul.wxs"></wxs>
+<view class="index_container">
+ <!--search-bar-->
+  <view class="search-bar">
+    <view class="search-bar-loacation"  bindtap='searchBarSelected' data-loca-add="{{locationStr}}">
+      <image class="search-bar-loacation-icon" src='http://img.sahuanka.com/sjCard/images/1.png'></image>
+      <text class="search-bar-loacation-text">{{locationStr}}</text>
+      <image class="search-bar-loacation-arrow" src='http://img.sahuanka.com/sjCard/images/3.png'></image> 
+    </view> 
+     
+    <view class="search-bar-input-container">
+        <view class="search-bar-input-sub-container">
+          <image class="search-bar-input-sub-container-icon" src="http://img.sahuanka.com/sjCard/images/2.png"></image>
+          <input placeholder="搜赏金任务" type="text" confirm-type="search" class="search-bar-input-sub-container-text" placeholder-style="color:#cccfce;letter-spacing:1px;" bindconfirm="valDone" value="{{searchVal}}"/>
+        </view>
+    </view>
+  </view>
+
+  <!--banner  -->
+  <view wx:if="{{bannerList.length>0}}" class="_banner">
+    <swiper class="banner"  indicator-dots="{{bannerList.length>1}}" autoplay="true" interval='5000' indicator-active-color="red" circular="true">
+      <block wx:for='{{bannerList}}' wx:key="{{item.bannerid}}">
+        <swiper-item class="_item">
+            <image src="{{item.url}}" class="banner-image"  bindtap='skip_bannerDetail' data-banner-type="{{item.type}}" data-banner-requesturl="{{item.requesturl}}"  binderror="errImg" ></image>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view wx:else >
+    <image class="banner" src="http://img.sahuanka.com/sjCard/images/home_banner.png" ></image>
+  </view>  
+
+  <!-- notification -->
+  <!-- 'hasNotification' is dependent on the number of notifications  -->
+   <view class="notification"  hidden="{{hasNotification}}">
+    <image class="notification-image" src="http://img.sahuanka.com/sjCard/images/notification.png"></image> 
+    <text class="notification-text">{{sysMessage}}</text>
+  </view> 
+
+  <!-- filter -->
+  <view class="filter">
+    <view bindtap='filterTitlesSelectedAtIndex0' data-index="0"  class='filter-item ' >
+      <text class="filter-item-text" wx:if="{{task==''}}">任务</text>
+      <text class="filter-item-text" wx:else>{{task}}</text>
+      <image class="filter-item-arrow" src='http://img.sahuanka.com/sjCard/images/3.png'></image>
+    </view>
+
+    <view bindtap='filterTitlesSelectedAtIndex1' data-index="1"  class='filter-item filter-border-left'>
+      <text class="filter-item-text" wx:if="{{area==''}}">全城</text>
+      <text class="filter-item-text" wx:else>{{area}}</text>
+      <image class="filter-item-arrow" src='http://img.sahuanka.com/sjCard/images/3.png'></image>
+    </view>
+
+    <view bindtap='filterTitlesSelectedAtIndex2' data-index="2"  class='filter-item filter-border-left' >
+      <text class="filter-item-text" wx:if="{{sort==''}}">排序</text>
+      <text class="filter-item-text" wx:else>{{sort}}</text>
+      <image class="filter-item-arrow" src='http://img.sahuanka.com/sjCard/images/3.png'></image>
+    </view>
+  </view>
+
+
+  <view class="index_sub_container">
+  <!-- filter-drop-down-list -->
+  <scroll-view class="filter-drop-down-list" scroll-y="true" hidden="{{taskHiden}}">
+    <view class="filter-drop-down-list-item" bindtap='filterTitleSelectedAtIndex0' data-index="{{index}}" wx:for="{{taskArray}}" wx:key="{{index}}">
+       <text class="filter-drop-down-list-item-text">{{item}}</text>
+       <view></view><image class="filter-drop-down-list-item-image" src="http://img.sahuanka.com/sjCard/images/accessory.png"  hidden="{{taskSelectedIndex!==index}}"></image>
+    </view>
+  </scroll-view> 
+
+  <scroll-view class="filter-drop-down-list" scroll-y="true" hidden="{{areaHiden}}">
+    <view class="filter-drop-down-list-item" bindtap='filterTitleSelectedAtIndex1' data-index="{{index}}" wx:for="{{areaArray}}" wx:key="{{index}}">
+       <text class="filter-drop-down-list-item-text">{{item}}</text>
+       <view></view><image class="filter-drop-down-list-item-image" src="http://img.sahuanka.com/sjCard/images/accessory.png"  hidden="{{areaSelectedIndex!==index}}"></image>
+    </view>
+  </scroll-view> 
+
+  <scroll-view class="filter-drop-down-list" scroll-y="true" hidden="{{sortHiden}}">
+    <view class="filter-drop-down-list-trim" bindtap='filterTitleSelectedAtIndex2' data-index="{{index}}" wx:for="{{sortArray}}" wx:key="{{index}}">
+       <text class="filter-drop-down-list-item-text">{{item}}</text>
+       <view></view><image class="filter-drop-down-list-item-image" src="http://img.sahuanka.com/sjCard/images/accessory.png"  hidden="{{sortSelectedIndex!==index}}"></image>
+    </view>
+  </scroll-view> 
+ 
+  <!--图文详情-->
+  <view class="mainbox">
+   
+    <!--有数据时-->
+    <view class="content" wx:if="{{homeList.length>0}}">
+      <block wx:for='{{homeList}}' wx:key="{{item.businessid}}">
+        <view class="singlebox" bindtap='skip_coreDetail' data-business-id="{{item.businessactivityid}}" data-id="{{item.businessid}}">
+            <view class="mainimgbox">
+              <image src="{{item.activitypic}}" data-index="{{index}}" binderror="errImg" data-err-img="homeList[{{index}}].activitypic"></image>
+              <view class='amount'>剩余{{item.surpluscount}}份</view>
+            </view>
+            <view class="textbigbox">
+              <view class="headline">{{item.activityname}}</view>
+              <view class="textdetail">{{item.description}}</view>
+              <view class="integralbox">赏金：
+              <text class="integral"><text>Š {{item.amount}}</text> 沅</text>
+              
+              <!-- <text class='distance'>{{filters.toFix(item.distance)}}km</text>  -->
+                <text class='wtiming' wx:if='{{item.jobTimeType==2}}'>任务时间：{{item.shelftime}}</text>
+                <text class='wtiming' wx:if='{{item.jobTimeType==1}}'>任务时间：截至{{item.endtime}}都可预约报名</text>
+              </view>
+            </view>
+        </view>
+      </block>
+      <view wx:if="{{reachBottomTip==true}}" class="reachbottom">到底啦</view>
+    </view>
+    <view class="nodata" >
+      暂无数据
+    </view> 
+  </view>
+  </view>
+</view>

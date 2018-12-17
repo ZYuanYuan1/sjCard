@@ -1,0 +1,53 @@
+<!--pages/apply/apply.wxml--><view class="page">
+    <view>
+      <view class="namebox">
+          <text><text class="star">* </text>企业名称 :</text>
+          <input type="text" class="" bindinput='businessname' placeholder='输入企业名称'/>
+      </view>
+       <view class="namebox">
+          <text><text class="star">* </text>项目或产品:</text>
+          <input type="text" bindinput='businessProject' placeholder='经营项目或产品'/>
+      </view>
+      <view class="namebox">
+          <text><text class="star">* </text>联系人姓名 :</text>
+          <input type="text" bindinput='touchName' placeholder='输入姓名'/>
+      </view>
+       <view class="namebox">
+          <text><text class="star">* </text>邀请人 :</text>
+          <input type="text" bindinput='touchInviteName' placeholder='输入邀请人'/>
+      </view>
+     <!-- <view class="namebox">
+          <text><text class="star">* </text>联系人电话 :</text>
+          <input type="number" bindinput='touchPhone' placeholder='请输入联系方式'/>
+      </view>-->
+    </view>
+    <!--提交按钮-->
+    <view class="btnbox">
+      <button bindtap='submitApply'>提交</button>
+    </view>
+    <view class="introapply maintext">
+        <text>商家入驻说明：</text>
+        <view>以上三项资料填写提交后，您可以等待赏金宝贝客服联系您。或者您也可以主动联系我们办理商家入驻手续。商家入驻需交纳3600元/年维护费及1万元保证金，并签订入驻协议。合同到期无违约全额退还保证金。</view>
+        <view>赏金宝贝地址：杭州市西湖区西园八路3号紫金众创小镇/浙大森林E2-1902</view>
+        <view>电话：0571-88005131</view>
+    </view>
+</view>
+
+
+<!--正常领取任务弹窗弹窗-->
+    <view class="modal-mask" catchtouchmove="preventTouchMove" wx:if="{{showModalTake}}"></view>
+    <view class="modal-dialog detailmodalbox" wx:if="{{showModalTake}}" >
+      <view class="modal-content detailmodal">
+         <image src="https://img.sahuanka.com/sjCard/images/task.png" class="alertimg"></image>
+         <view class="alerttext">
+            <view>请确保资料真实无误</view> 
+            <view>是否确定提交入驻资料</view> 
+         </view>
+      </view>
+      <view class="modal-footer">
+        <view class="btn-cancel" bindtap="onCancelTake" data-status="cancel">取消</view>
+        <view class="btn-confirm" bindtap="onConfirmTake" data-status="confirm">确定</view>
+      </view>
+    </view> 
+ <!--绑定手机号弹窗-->
+ <bindphone isShow="{{showPhoneModal}}" bindphone="getBindInfo"></bindphone>

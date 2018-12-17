@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "签定试用入驻协议",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "bindphone": "../../components/bindPhone/bindPhone"
+  }
+}

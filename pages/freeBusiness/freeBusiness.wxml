@@ -1,0 +1,36 @@
+<!--pages/freeBuesiness/freeBuesiness.wxml-->
+<view class='f_b_container'>
+  <image class='top_bg_image' src="http://img.sahuanka.com/sjCard/images/bg_top.png"></image>
+  <scroll-view class='f_b_sub_container' scroll-y="true"> 
+    <view class='user'>
+      <image class='user_avatar' src="http://img.sahuanka.com/sjCard/images/defaultImg.png" mode='widthFix'></image>
+      <text class='user_name'> {{business.businessname?business.businessname:''}} </text>
+    </view>
+    <view class='merchant'>
+      <image class='merchant_avatar' src="http://img.sahuanka.com/sjCard/images/pepole.png"></image>
+      <text class='merchant_name'  wx:if="{{business.businesstype==1}}">试用商家</text>
+       <text class='merchant_name'  wx:if="{{business.businesstype==2}}">付费商家</text>
+    </view>
+
+    <view class='contract_container'>
+      <view class='contract_title'> 合同有效期   </view>
+      <view  class='contract_validity_period'>
+        {{business.createdate?business.createdate:''}}—— {{business.enddate?business.enddate:''}}
+      </view>
+    </view>
+
+    <view wx:if="{{business.businesstype==2}}">
+      <view class='deposit' bindtap='toggleDeposit' >
+        <text class='deposit_title'>  保证金 ／ 年费 </text>
+      </view>
+      <view class='payment_record' bindtap='toggleAccountDetail'>
+        <text> 我的缴费记录 </text>
+      </view>
+    </view>
+    <view wx:if="{{business.businesstype==1}}">
+      <view class='payment_record' bindtap='toggleDeposit' >
+        <text> 申请成为付费商家 </text>
+      </view>
+    </view>   
+  </scroll-view>
+</view>

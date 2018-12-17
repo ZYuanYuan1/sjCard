@@ -1,0 +1,7 @@
+<!--pages/comment_success/comment_success.wxml-->
+<view class='contanier'style="width:{{swidth}}rpx;height:{{sheight}}rpx">
+    <view class='success'>
+        <view>提交成功。等待审核</view>
+        <navigator url='/pages/myOrders/myOrders'>点击查看订单</navigator>
+    </view>
+</view>

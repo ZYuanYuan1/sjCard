@@ -1,0 +1,43 @@
+<!--pages/myAttention/myAttention.wxml-->
+<view class="page">
+  <!--<view class="tip">
+    当关注的商家发布新消息时系统。将及时通知你
+  </view>-->
+  <view>
+      <view wx:if="{{saveList.length>0}}">
+          <block wx:for="{{saveList}}" wx:key="{{item.attentionid}}">
+            <view class="singlesavebox" bindtap='skip_lessonList' data-business-id="{{item.businessid}}">
+                <view class="saveleftbox">
+                    <image src="{{item.businesspic==null?'https://img.sahuanka.com/sjCard/images/defaultImg.png':item.businesspic}}" data-index="{{index}}" binderror="errImg" data-err-img="saveList[{{index}}].businesspic"></image>
+                    <text wx:if="{{item.businessname}}">{{item.businessname}}</text>
+                    <text wx:else>暂无信息</text>
+                </view>
+                <view class="saverightbox" catchtap="showDialogBtn" data-index="{{index}}" data-save-id="{{item.businessid}}">
+                    取消关注
+                </view>
+            </view>
+          </block>
+          <view wx:if="{{reachBottomTip==true}}" class="reachbottom">到底啦</view>
+      </view>
+      <!--没有关注时显示-->
+       <view class="nodata" wx:else>
+            暂无数据 
+      </view> 
+  </view>
+  <!--取消关注弹窗-->
+    <view class="modal-mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+    <view class="modal-dialog paydialog" wx:if="{{showModal}}">
+      <view class="modal-content contentpay">
+         <image src="https://img.sahuanka.com/sjCard/images/alert.png" class="alertimg"></image>
+         <view class="alerttext alertpay">
+            确定取消关注该商家
+         </view>
+      </view>
+      <view class="modal-footer">
+        <view class="btn-cancel" bindtap="onCancel" data-status="cancel">取消</view>
+        <view class="btn-confirm" bindtap="onConfirm" data-status="confirm">确定</view>
+      </view>
+    </view> 
+   <!--绑定手机号弹窗-->
+   <bindphone isShow="{{showPhoneModal}}" bindphone="getBindInfo"></bindphone>
+</view>

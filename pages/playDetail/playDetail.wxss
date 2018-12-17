@@ -1,0 +1,3 @@
+/* pages/playDetail/playDetail.wxss */
+@import "../../wxParse/wxParse.wxss";
+@import "/pages/scoreDetail/scoreDetail.wxss";

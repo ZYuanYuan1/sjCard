@@ -1,0 +1,17 @@
+<!--pages/payBuesiness/payBuesiness.wxml-->
+<view class='page'>
+  <view><image></image></view>
+  <view>红黄蓝</view>
+  <view>付费商家</view>
+  <view>
+    <view>合同有效期</view>
+    <view>2018-------2019</view>
+  </view>
+  <view>
+    <view>保证金/年费</view>
+  </view>
+  <view>
+    <view>我的缴费记录</view>
+  </view>
+  
+</view>

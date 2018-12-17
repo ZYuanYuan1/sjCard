@@ -1,0 +1,147 @@
+/* pages/myOrders/myOrders.wxss */
+@import '/components/wux.wxss';
+@import '/common_css/skyvow.wxss'; 
+/* .bar_on{
+  color:#F02D00;
+z-index:100;
+} */
+.nav_top{
+  background-color:#fff;
+  position:fixed;
+}
+.weui-navbar__item.weui-bar__item_on{
+  color:#f3362b;
+  z-index:100;
+}
+.weui-navbar__slider{
+  background-color:#f3362b;
+  width:3em;
+}
+.order-outterlayer{
+  background-color:#f6f6f6;
+  padding-top:20rpx;
+}
+.order-singlebox{
+  height:180rpx;
+  background-color:#fff;
+  padding:28rpx;
+  box-sizing:border-box;
+  display:flex;
+  margin-bottom:20rpx;
+}
+.orderimgbox{
+  width:120rpx;
+  height:120rpx;
+  margin-right: 20rpx;
+  flex:0 0 120rpx;
+}
+.orderimgbox image{
+  width:100%;
+  height:100%;
+}
+.orderdetailbox{
+  flex:1;
+}
+/* .orderdetailbox{
+  font-size: 36rpx;
+} */
+.orderrightupbox{
+  color:#333;
+  display: flex;
+  justify-content: space-between;
+  font-size: 34rpx;
+}
+.upheadline{
+  text-align:left;
+  width:80%;
+  overflow:hidden;
+text-overflow:ellipsis;
+display:-webkit-box;
+-webkit-line-clamp:1;
+-webkit-box-orient:vertical;
+}
+.rightstatus{
+  color:#f3362b;
+  font-size:28rpx
+}
+.orderrightdownbox{
+  display: flex;
+  justify-content: space-between;
+  font-size: 28rpx;
+  margin-top:25rpx;
+}
+.orderrightdownbox button{
+  width:128rpx;
+height:50rpx;
+font-size:28rpx;
+line-height:48rpx;
+background-color:#fff;
+border-radius:8rpx;
+border:2rpx solid #ff9900;
+color:#ff9900;
+outline:none;
+padding:0;
+text-align:center;
+
+}
+ button::after{
+  border:0;
+} 
+/*弹框样式*/
+.modal-content{
+  border-top:2rpx solid #e5e5e5;
+  
+}
+.alerttext {
+ text-align:center;
+ font-size:28rpx;
+ color:#333;
+ margin-top:20rpx;
+ margin-bottom:10rpx;
+}
+/*二维码样式*/
+/* .container-box{background-color: #efeff4;} */
+.img-box{
+  /* padding: 32rpx; */
+  /* border-bottom:1rpx solid #e5e5e5; */
+  position:relative;
+  /* padding-top:150rpx; */
+}
+.img-box image{width: 686rpx;height: 686rpx;background-color: #f9f9f9}
+.input-row{
+    margin: 30rpx auto;
+    border-bottom: 1rpx solid #e5e5e5;
+    border-top: 1rpx solid #e5e5e5;
+    display: flex;
+    align-items: center;
+    height: 88rpx;
+    padding: 0 32rpx; 
+    background-color: #fff;
+    font-size: 34rpx;
+    color: #000
+}
+
+.input-row input{margin-left: 100rpx;flex: 1}
+.mybtn{width:686rpx;margin: 60rpx auto }
+.mask{position: fixed;top: 0;left: 0;z-index: 3; width: 100%;height: 100%;opacity: 0;}
+.userIntroText{
+  color:#000;
+  font-size:28rpx;
+  border:2rpx solid #e5e5e5;
+  border-radius:10rpx;
+  padding:10rpx;
+  height:116rpx;
+  margin-bottom:20rpx;
+  width:100%;
+  text-align:left;
+}
+ /*评价弹框*/
+.rater-content{
+  border-top:none;
+}
+.rater-dialog{
+  padding-top:30rpx;
+}
+.rater-img-box{
+  margin-left:60rpx;
+}

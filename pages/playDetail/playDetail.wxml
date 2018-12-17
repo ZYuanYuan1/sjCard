@@ -1,0 +1,73 @@
+<!--pages/playDetail/playDetail.wxml-->
+<import src="../../wxParse/wxParse.wxml"/>
+<view class="page">
+  <!--顶部图片-->
+  <view class="topdetailimgbox" bindtap='skip_lessonList'>
+    <image src="{{businessInfo.businesspic}}" binderror="errImg" data-err-img="{{businessInfo.businesspic}}"></image>
+  </view>
+  <view class="maindetailbigbox">
+    <!--标题与简介-->
+    <view>
+       <!--标题-->
+      <view class="headline">
+         {{businessInfo.businessname}}
+      </view>
+      <!--详情和关注-->
+      <view class="caredetailbox">
+        <view class="introdetailbox" bindtap='skip_lessonList'>
+             {{businessInfo.description}}
+        </view>
+        <view class="starbox" wx:if="{{saving==0}}" bindtap="save">
+             <image src="https://img.sahuanka.com/sjCard/images/save.png"></image>
+             <view class="savetext">关注</view>
+        </view>
+        <view class="starbox" wx:else bindtap="save">
+            <image src="https://img.sahuanka.com/sjCard/images/shoucangblue.png"></image> 
+             <view class="savetext">关注</view>
+        </view>
+      </view> 
+      <!--任务详情-->
+      <view>
+          <!--顶部任务介绍-->
+          <view class="lineboxlayer">
+              <text class="linebox dotleft">
+                <text class="dotgrey"></text>
+              </text>
+              <view class="taskhead">  产品介绍</view>
+              <text class="linebox">
+                <text class="dotgrey"></text>
+              </text>
+          </view>
+          <!--任务标题-->
+          <view>
+              <view class="taskheadtext">{{activityInfo.activityname}}</view>
+               <view class="taskitem taskitemone">
+                  <image src="https://img.sahuanka.com/sjCard/images/money.png"></image> 
+                  <text>价格：<text class="totalscore">{{activityInfo.amount}}</text> 沅</text>
+              </view>
+              <view class="taskitem taskitemlast">
+                  <image src="https://img.sahuanka.com/sjCard/images/location.png"></image> 
+                  <text>地点：<text>{{activityInfo.address}}</text></text>
+              </view>
+          </view>
+          <!--图文-富文本-->
+          <view class="introinfolayer">
+               <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+          </view>
+      </view>
+    </view>
+  </view>
+   <!--底部按钮-->
+  <view class="bottombox">
+      <view class="bottomleftbox">
+          <button class="pagesharebtn" open-type="share" hover-class="none" hover-stop-propagation="true"></button>
+          <image src="https://img.sahuanka.com/sjCard/images/share.png"></image>
+          <text>分享</text>
+      </view>
+      <view class="bottomrightbox" bindtap='skip_sureOrders'>
+        去支付<text wx:if="{{activityInfo.ismember==1}}">(会员专享)</text>
+      </view>
+  </view>
+</view>
+<!--绑定手机号弹窗-->
+<bindphone isShow="{{showPhoneModal}}" bindphone="getBindInfo"></bindphone>

@@ -1,0 +1,61 @@
+/* pages/myAttention/myAttention.wxss */
+@import "../../components/bindPhone/bindPhone.wxss";
+.tip{
+  background-color:#f6f6f6;
+  border-bottom:2rpx solid #ddd;
+  color:#f3362b;
+  padding:0 30rpx;
+  height:60rpx;
+  line-height:60rpx;
+  font-size:24rpx;
+  box-sizing: border-box;
+}
+.singlesavebox{
+  height:160rpx;
+  padding:30rpx;
+  box-sizing: border-box;
+  display:flex;
+  font-size:34rpx;
+  color:#333;
+  background-color:#fff;
+  border-bottom:2rpx solid #ddd;
+  justify-content: space-between;
+  align-items: center;
+}
+.saveleftbox{
+    overflow:hidden;
+  text-overflow:ellipsis;
+  display:-webkit-box;
+  -webkit-line-clamp:1;
+  -webkit-box-orient:vertical;
+  flex:1;
+}
+.saveleftbox image{
+  width:180rpx;
+  height:100rpx;
+  margin-right:20rpx;
+  vertical-align: middle
+}
+ 
+.saverightbox{
+  width:146rpx;
+  height:48rpx;
+  border:1px solid #ff9900;
+  color:#ff9900;
+  font-size:24rpx;
+  text-align:center;
+  line-height:48rpx;
+  border-radius:8rpx;
+  flex:0 0 146rpx;
+}
+.paydialog{
+  margin:-280rpx 100rpx;
+  width:540rpx;
+
+}
+.alertpay{
+  text-align:center;
+}
+.contentpay{
+  padding:30rpx 60rpx 50rpx 60rpx;
+}

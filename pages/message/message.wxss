@@ -1,0 +1,69 @@
+/* pages/message/message.wxss */
+page{
+  min-height:100%;
+  background-color:#f6f6f6;
+}
+
+
+.date{
+  display: flex;
+  align-items: center;
+  flex-direction:row;
+  justify-content: center; 
+  font-size: 14px;
+  text-align: center;
+  margin-top: 20px;
+ 
+
+  
+}
+.date label{
+  border-radius:10rpx;
+  opacity:0.3;
+  background-color:#333;
+  color:#fff;
+}
+.iconbox{
+  width:32rpx;
+  height:32rpx;
+  vertical-align: middle;
+  margin-right:24rpx;
+}
+.textValue{
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 8px;
+  font-size: 16px;
+  color:rgb(136, 132, 132);
+  background:rgb(255, 255, 255);
+  box-shadow:0rem 0.17rem 0.67rem 0.08rem rgba(227,221,221,0.5);
+  border-radius:16rpx;
+}
+.title{
+  display: flex;
+  align-items: center;
+  /* border-bottom:2rpx solid #e8e8ed; */
+  font-size: 28rpx;
+  margin-top: 20rpx;
+}
+.textValue image{
+  margin-left: 20px;
+  margin-top: 20rpx;
+}
+.commont{
+  margin-left: 36px;
+  font-size: 24rpx;
+  font-style:initial;
+  font-weight:200;
+  margin-top: -18rpx;
+  margin-right: 28rpx; 
+}
+.line{
+  width: 630rpx;
+  height: 4rpx; 
+  margin-top: 15rpx;
+}
+.labelvalue{
+  margin-top: 20rpx;
+}
+

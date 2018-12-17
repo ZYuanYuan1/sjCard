@@ -1,0 +1,54 @@
+<!--pages/myAccount/myAccount.wxml-->
+<view class="page">
+    <view class="detailbg">
+      <image src="/images/shang.png"></image>
+      <view class="allinbox">
+        <view class="leftbox">
+            <view class="exescore">赏金余额：<text>{{userInfo.integral?userInfo.integral:'0.00'}}</text></view>
+             <view class="accountlayerbox">
+              <view class="lookdealbtn" bindtap='skip_dealDetail'>
+                交易明细 
+                <image src="https://img.sahuanka.com/sjCard/images/rightbutton.jpg"></image>
+              </view>
+              <view class="lookdealbtn" bindtap='skip_conversion'>
+                余额转赏金
+                <image src="https://img.sahuanka.com/sjCard/images/rightbutton.jpg"></image>
+              </view>
+            </view>
+        </view>
+        <view class="rightbox" bindtap='skip_score_charge'>
+            充赏金
+        </view>
+      </view>
+    </view>
+    <view class="detailbg">
+      <image src="/images/shang.png"></image>
+      <view class="allinbox">
+        <view class="leftbox">
+            <view class="exescore">现金余额：<text>{{userInfo.amount?userInfo.amount:'0.00'}}</text></view>
+            <view class="exescore">冻结金额：<text>{{userInfo.freezeamount?userInfo.freezeamount:'0.00'}}</text></view>
+            <view class="accountlayerbox">
+                <view class="lookdealbtn" bindtap='skip_accountDetail'>
+                  账户明细 
+                  <image src="https://img.sahuanka.com/sjCard/images/rightbutton.jpg"></image>
+                </view>
+                <view class="lookdealbtn" bindtap='skip_cash_record'>
+                  提现记录 
+                  <image src="https://img.sahuanka.com/sjCard/images/rightbutton.jpg"></image>
+                </view>
+            </view>
+            
+        </view>
+        <view class="rightbox" bindtap='skip_cash_charge'>
+            提现
+        </view>
+      </view>
+    </view>
+
+     <view  class='maintext'>
+          <text>温馨提示：</text> 
+            <view>亲子家庭赚得的赏金不能转成现金余额，不可提现；商家经营获取的赏金直接生成为现金余额，随时可申请提现，还可用现金余额购买赏金发起悬赏任务。</view>
+          </view>
+</view>
+ <!--绑定手机号弹窗-->
+ <bindphone isShow="{{showPhoneModal}}" bindphone="getBindInfo"></bindphone> 

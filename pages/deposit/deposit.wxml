@@ -1,0 +1,35 @@
+<view class='deposit_container'>
+  <view class='segment_control_container'>
+      <view class='segment_control'>
+        <button class="segment  {{ segmentIndex === index ? 'segment_selected' : '' }}" wx:for="{{segmentTitles}}" data-index='{{index}}' wx:for-item='title' wx:key="index" bindtap='segmentSelected'>
+        {{title}}
+        </button>
+      </view>
+  </view>
+
+  <view class="amount_container {{isAmountContainerSelected ? 'amount_container_selected': ''}}" bindtap='amountContainerSelected'>
+    <image class='amount_selected_image' src='http://img.sahuanka.com/sjCard/images/amount_selected_image.png' hidden='{{!isAmountContainerSelected}}'></image>
+    <block wx:if="{{segmentIndex === 0}}">
+      <view class='amount_sub_container'>
+        <text class="amount_title">首次入驻需缴纳保证金10000</text>
+      </view>
+    </block>
+    <block wx:else>
+      <view class='amount_sub_container amount_sub_container_annual_fee'>
+        <text class="amount_title">年费</text>
+        <text class="amount_text">¥ 3600</text>
+      </view>
+    </block>
+  </view>
+
+  <view class='agreement'>
+    <text>《关于保证金和年费》</text>
+  </view>
+
+  <view class='payment' wx:if="{{isshowpay}}">
+    <view class='payment_button'  bindtap='gotocharge'>立即支付</view>
+  </view>
+  <view class='payment' wx:else>
+    <view class='payment_button2'>保证金已付</view>
+  </view>
+</view>

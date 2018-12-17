@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "确认订单",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "paySix": "../../components/six-input-box/component",
+    "bindphone": "../../components/bindPhone/bindPhone"
+  }
+  
+}

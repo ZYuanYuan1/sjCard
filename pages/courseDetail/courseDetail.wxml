@@ -1,0 +1,127 @@
+<!--pages/courseDetail/courseDetail.wxml-->
+<import src="../../wxParse/wxParse.wxml"/>
+<view class="page">
+<view class="topdetailimgbox"  bindtap='skip_lessonList'>
+    <image src="{{businessInfo.businesspic}}" binderror="errImg" data-err-img="{{businessInfo.businesspic}}"></image>
+  </view>
+  <view class="maindetailbigbox">
+    <!--标题与简介-->
+    <view> 
+      <!--任务详情-->
+      <view>
+      <!-- 更改模块 -->
+ <!-- 第一个模块 -->
+       <view class='model'>
+              <view class="taskheadtext taskheadtextThree" style='text-align:center;'>{{businessInfo.businessname}}</view>
+               <view class="taskitem taskiteTwo">
+                  <text class='left'>{{businessInfo.description}}</text>
+                <view class='right' style='flex:0 0 30%'>
+                  <view style="margin-right:40rpx;text-align:center" bindtap="goShop">
+                     <image src='/images/shop.png' class='titleRightimg'></image>
+                     <view>店铺</view>
+                  </view>
+                  <view style='text-align:center' wx:if="{{saving==0}}" bindtap="save">
+                     <image class='titleRightimg' src='/images/attention.png'></image>
+                     <view>关注</view>
+                  </view>
+                  <view style='text-align:center'  wx:else  bindtap="save">
+                     <image class='titleRightimg' src='http://img.sahuanka.com/sjCard/images/shoucangblue.png'></image>
+                     <view>关注</view>
+                  </view>
+                </view>
+              </view>
+          </view>
+
+    <!-- 第二个 -->
+
+      <view class='model'>
+              <view class="taskheadtext taskheadtextThree" style='display:flex;font-size:28rpx;'>{{activityInfo.activityname}}</view>
+          <view>
+               <view class="taskitem" style='display:flex'>
+                  <text style='flex:0 0 75%;'>价格：<text class="totalscore">Š {{activityInfo.amount}}</text> 沅</text>
+                  <view>
+                 <image src='/images/copy.png' class='shoppingImg'></image>
+                 <text style='font-size:24rpxcolor:#999999;'>已售{{ goodsNumber}}件</text>
+              </view>
+              </view>
+          </view>
+          </view>
+    <!-- 第三个 -->
+      <view class='model' hidden='{{addrShow}}'>
+              <view class="taskheadtext taskheadtextThree" style='font-size:26rpx;color:#999999'>适用店铺({{addressLength}})</view>
+           <view class='taskitem'>
+               <view class='address' wx:for="{{addressList}}">
+                  <image src='/images/position.png' class='addressImg'></image>
+                  <view>{{item.province}}{{item.city}}{{item.district}}{{item.address}}</view>
+              </view>
+            </view>
+          </view>
+    <!-- 第四个 -->
+
+      <view class='model' style='border-bottom:none' hidden='{{commentShow}}'>
+              <view class="taskheadtext taskheadtextThree" style='display:flex'>
+                  <view class='dissLeft'>用户评价({{count}})</view>
+                  <view style='font-size:24rpx;color:#F5A623;align-items:center;' bindtap='commentAll'>
+                     <text>查看全部</text>
+                     <image style='width:22rpx;height:22rpx;margin-left:8rpx' src='/images/arrow.png'></image>
+                  </view>
+              </view>
+               <view class="taskitem" style='display:flex'>
+                   <image src='{{info.avatarUrl}}' class='dissCountleft'></image>
+                   <view style='display:flex:0 0 72%;line-height:20rpx;line-height:22px;width:68%;'>
+                        <view style='font-size:26rpx;color:#446889'>{{info.userName==null&&avatarUrl==null?'*****':info.userName}}</view>
+                        <view style='font-size:20rpx'><text>打分 </text>
+                        <image wx:for="{{starImg}}"src='{{item}}' class='star' style="margin-right:4rpx"></image></view>
+                        <view style='font-size:28rpx'>{{info.content}}</view>
+                        <view style='margin-top:22rpx'><image wx:for="{{info.imgList}}" class='dissCenterimg' src='{{item}}'></image>
+                        </view>
+                   </view>
+                   <view style='font-size:24rpx;color:#999999;flex:0 0 16%'>{{createDate}}</view>
+              </view>
+          </view>
+    <!-- 第五个 -->
+      <!-- <view class='model' style='border-bottom:none'>
+              <view class="taskheadtext">{{businessInfo.businessname}}</view>
+               <view class="taskitem taskitemone">
+                  <text>价格：<text class="totalscore">Š {{activityInfo.amount}}</text> 沅</text>
+              </view>
+          </view> -->
+          <!--任务标题-->
+         </view> 
+        <view class='detail'>一详情一</view>
+       <view class="maindetailbigbox" style='padding:0rpx 30rpx 40rpx 30rpx;'>
+          <!--图文-富文本-->
+          <view class="introinfolayer">
+              <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+          </view>
+      </view>
+    </view>
+  </view>
+   <!--底部按钮-->
+  <!-- <view class="bottombox">
+      <view class="bottomleftbox">
+           <button class="pagesharebtn" open-type="share" hover-class="none" hover-stop-propagation="true"></button>
+          <image src="/images/share.png"></image>
+          <text>分享</text>
+      </view>
+      <view class="bottomrightbox" bindtap='skip_sureOrders'>
+        去支付<text wx:if="{{activityInfo.ismember==1}}">(会员专享)</text>
+      </view>
+  </view> --> 
+    <view class="footer-box">        
+          <view class="bottomleftbox">
+           <button class="pagesharebtn"  bindtap='changIndex'>首页</button>
+          <!-- <image src="/images/share.png"></image> -->  
+      </view>
+        <!-- <view class="shop-cart-btn" bindtap="goShopCar">
+            <view class="shop-num">({{shopNum}})</view>
+            <view style='position:absolute;bottom:10rpx;'></view>
+        </view> -->
+        <!-- <view wx:if="{{!goodsDetail.basicInfo.pingtuan}}" class="join-shop-cart" bindtap="toAddShopCar">加入购物车</view> 
+        wx:if="{{!goodsDetail.basicInfo.pingtuan}}"
+        bindtap=tobuy-->
+        <view  class="now-buy" bindtap="sureOrders">立即购买</view>
+   </view>
+</view>
+<!--绑定手机号弹窗-->
+<bindphone isShow="{{showPhoneModal}}" bindphone="getBindInfo"></bindphone>

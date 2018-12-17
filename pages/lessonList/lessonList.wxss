@@ -1,0 +1,2 @@
+/* pages/lessonList/lessonList.wxss */
+@import "/pages/playGame/playGame.wxss";

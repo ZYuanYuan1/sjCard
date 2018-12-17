@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "账户提现",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "bindphone": "../../components/bindPhone/bindPhone"
+  }
+}

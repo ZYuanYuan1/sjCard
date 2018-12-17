@@ -1,0 +1,19 @@
+/* pages/invite_bonus_intro/invite_bonus_intro.wxss */
+.introhead{
+  font-size:36rpx;
+  color:#333;
+  margin:50rpx 0 30rpx;
+  text-align:center;
+}
+.maintext{
+  padding:0rpx 30rpx;
+  color:#333;
+  line-height:50rpx;
+}
+.maintext view{
+  font-size:28rpx;
+  text-indent: 56rpx;
+}
+.maintext text{
+  font-size:32rpx;
+}

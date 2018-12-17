@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "交易明细",
+  "enablePullDownRefresh":true,
+  "usingComponents": {
+    "bindphone": "../../components/bindPhone/bindPhone"
+  }
+}

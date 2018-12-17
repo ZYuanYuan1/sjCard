@@ -1,0 +1,129 @@
+.deposit_container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+}
+.segment_control_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 94rpx;
+}
+.segment_control {
+  display: flex;
+  flex-direction: row;
+  width: 340rpx;
+  height: 78rpx;
+  border-radius: 44rpx;
+  border-width: 1rpx;
+  border-color: #FFCA72;
+  border-style: solid;
+  justify-content: cneter;
+  align-items: center;
+}
+
+.segment {
+  flex-grow: 1;
+  color: #030303;
+  font-size: 32rpx;
+  background-color: transparent;
+}
+.segment_selected {
+  background-color: #FFCA72;
+  border-radius: 44rpx;
+}
+
+.amount_container {
+  display: flex;
+  height: 128rpx;
+  margin-left: 60rpx;
+  margin-right: 60rpx;
+  margin-top: 80rpx;
+  justify-content: center;
+  align-items: center;
+  box-shadow:0rpx 4rpx 16rpx 2rpx #E3DDDD;
+  border-radius:16rpx;
+  position: relative;
+}
+
+.amount_container_selected {
+  box-shadow:0rpx 4rpx 16rpx 2rpx #FFCA72;
+  border: solid #FFCA72 1rpx
+}
+
+.amount_selected_image {
+  height:40rpx;
+  width: 43rpx;
+  bottom: -2rpx;
+  right: -2rpx;
+  z-index: 0;
+  position:absolute;
+}
+
+.amount_sub_container {
+  display: flex;
+  position:absolute;
+  z-index: 1;
+  flex-grow: 1;
+  height: 128rpx;
+  flex-direction: row;
+  align-items: center;
+  justify-content:space-between; 
+}
+
+.amount_sub_container_annual_fee {
+  left: 100rpx;
+  right: 100rpx;
+}
+
+.amount_title {
+  font-size: 32rpx;
+  color: #4A4A4A;
+}
+
+.amount_text {
+  font-size: 32rpx;
+  color: #4A4A4A;
+}
+
+.agreement {
+  display: flex;
+  margin-top: 36rpx;
+  justify-content: center;
+  align-items: center;
+  font-size: 24rpx;
+  color: #4A4A4A
+}
+
+.payment {
+  display: flex;
+  margin-top: 50rpx;
+  padding-left: 75rpx;
+  padding-right: 75rpx;
+}
+
+.payment_button {
+  display: flex;
+  font-size: 32rpx;
+  color: #4A4A4A;
+  border-radius: 68rpx;
+  height: 60rpx;
+  width: 100%;
+  background-color: #FFCA72;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+.payment_button2 {
+  display: flex;
+  font-size: 32rpx;
+  color: #4A4A4A;
+  border-radius: 68rpx;
+  height: 60rpx;
+  width: 100%;
+  background-color: rgb(226, 225, 222);
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}

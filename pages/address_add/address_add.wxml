@@ -1,0 +1,20 @@
+<!--pages/address_add/address_add.wxml-->
+<view>
+  <view class='addr_content' wx:for='{{addressList}}'>
+    <view class='addr addr_left'>
+    <view class='top'>{{item.recipient}}</view>
+    <view class='top'>{{item.phoneNumber}}</view>
+    <view class='enable top' style='font-size:22rpx'hidden="{{index==0&&item.isDefault==true?false:true}}">默认</view>
+    <view class='add'>{{item.province}}{{item.city
+}}{{item.district}}{{item.street}}</view>
+    </view>
+    <view class='addr addr_right'>
+      <image style="width: 28rpx;height: 28rpx;padding-top:30rpx"src='https://img.sahuanka.com/sjCard/images/edit.png' bindtap='editAddess' data-addressList="{{item}}"></image>
+      <image  style="width: 28rpx;height: 28rpx;display:block" src='/images/del.png' bindtap='deleteAddress' data-id="{{item.userAddrId}}"></image>
+    </view>
+  </view>
+</view>
+ <view class='comment_footer' bindtap='addAddr'>
+     <button>+新增地址</button>
+ </view>
+

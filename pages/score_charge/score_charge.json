@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "撒欢宝充值",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "bindphone": "../../components/bindPhone/bindPhone"
+  }
+}

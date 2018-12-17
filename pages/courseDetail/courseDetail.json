@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "课程详情",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "bindphone": "../../components/bindPhone/bindPhone"
+  }
+}

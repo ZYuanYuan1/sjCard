@@ -1,0 +1,176 @@
+<!--pages/myorder/myorder.wxml-->
+<view class="orderCont">
+  <!-- 地址 -->
+  <view hidden='{{waystype==1?true:false}}'>
+    <view class='orderAddr orderPadd orderMar' bindtap="addAddress" style="height:100rpx" hidden='{{addressList}}'>
+      <text>您还没有填写地址，马上去完善</text>
+      <image src='/images/arrow11.png'></image>
+    </view>
+    <view class="orderAddr orderPadd orderMar" bindtap="selectAddress" hidden='{{!addressList}}'>
+      <view>
+        <view>{{addressList.recipient}} </view>
+        <view class='enable' style='font-size:22rpx'>默认</view>
+      </view>
+      <view style='flex:0 0 73%;padding-left:50rpx'>
+        <view>{{addressList.phoneNumber}}</view>
+        <view>{{addressList.province}}{{addressList.city}}{{addressList.district}}{{addressList.street}}</view>
+      </view>
+      <image src='/images/arrow11.png'></image>
+    </view>
+  </view>
+  <view wx:if="{{waystype==0}}">
+    <view class='orderBac orderPadd orderMar orderFont'>
+      <view class='orderItems'>
+        <view class='orderItem'>商品金额</view>
+        <view>{{orderInfo.amount}}沅</view>
+      </view>
+      <view class='orderItems' style='border-bottom:2rpx solid #e4e4e4;border-top:2rpx solid #e4e4e4'>
+        <view class='orderItem'>可抵扣赏金</view>
+        <view>{{orderInfo.integral?orderInfo.integral:'0'}}沅</view>
+      </view>
+      <view class='orderItems'>
+        <view class='orderItem'>运费</view>
+        <view>0沅</view>
+      </view>
+    </view>
+    <view class="orderBac orderPadd orderFont orderItems orderMar">
+      <text style='flex:0 0 10%'>留言</text>
+      <textarea placeholder='点击给商家留言' placeholder-class='font-size:26rpx' bindinput="remark"></textarea>
+    </view>
+    <view class='orderBac' style="display:flex;padding:30rpx">
+      <view style='flex:0 0 24%'>
+        <image style='width:140rpx;height:140rpx;background:#ccc' src="{{orderInfo.orderpic?orderInfo.orderpic:'https://img.sahuanka.com/sjCard/images/defaultImg.png'}}" binderror="errImgDetail" data-err-img="{{orderInfo.orderpic}}"></image>
+      </view>
+      <view style='flex:0 0 70%'>
+        <view class='orderFont'>{{orderInfo.activityname}}</view>
+        <!-- <view style='font-size:26rpx;color:#868686'>半年</view> -->
+        <view class='orderFont'>{{orderInfo.amount}}沅</view>
+      </view>
+      <view class='orderFont'>x1</view>
+    </view>
+    <!-- 尾部 -->
+    <view class='footer'>
+      <view class='fontTwo' style='flex:0 0 64%'>
+        <text class="fontThree" style='color:#D0021B;'>实付：{{orderInfo.amount?orderInfo.amount:'0.00'}}沅</text>
+      </view>
+      <view bindtap='showDialogBtn' data-order-id="{{orderInfo.orderid}}" data-order-number="{{orderInfo.orderno}}" data-order-type="{{orderInfo.ordertype}}" bindtap='wxpay' class='fontTwo fontThree count' style='color:#ffffff'>
+        付款
+      </view>
+    </view>
+  </view>
+
+  <!-- 第二种 -->
+  <view wx:if="{{waystype==7}}">
+    <view class='orderBac orderPadd orderMar orderFont'>
+      <view class='orderItems'>
+        <view class='orderItem'>商品金额</view>
+        <view>{{orderInfo.amount}}沅</view>
+      </view>
+      <view class='orderItems' style='border-bottom:2rpx solid #e4e4e4;border-top:2rpx solid #e4e4e4'>
+        <view class='orderItem'>可抵扣赏金</view>
+        <view>{{orderInfo.integral?orderInfo.integral:'0'}}沅</view>
+      </view>
+      <view class='orderItems'>
+        <view class='orderItem'>运费</view>
+        <view>0沅</view>
+      </view>
+    </view>
+    <view class="orderBac orderPadd orderFont orderItems orderMar">
+      <text style='flex:0 0 10%'>留言</text>
+      <textarea placeholder='点击给商家留言' placeholder-class='font-size:26rpx' bindinput="remark"></textarea>
+    </view>
+    <view class='orderBac' style="display:flex;padding:30rpx">
+      <view style='flex:0 0 24%'>
+        <image style='width:140rpx;height:140rpx;background:#ccc' src="{{orderInfo.orderpic?orderInfo.orderpic:'https://img.sahuanka.com/sjCard/images/defaultImg.png'}}" binderror="errImgDetail" data-err-img="{{orderInfo.orderpic}}"></image>
+      </view>
+      <view style='flex:0 0 70%'>
+        <view class='orderFont'>{{orderInfo.activityname}}</view>
+        <!-- <view style='font-size:26rpx;color:#868686'>半年</view> -->
+        <view class='orderFont'>{{orderInfo.amount}}沅</view>
+      </view>
+      <view class='orderFont'>x1</view>
+    </view>
+    <view class="namebox box">
+      <text><text class="star">* </text>姓名 :</text>
+      <input type="text" bindinput='orderName' placeholder='姓名' />
+    </view>
+    <view class="namebox box">
+      <text><text class="star">* </text>手机 :</text>
+      <input type="number" bindinput='orderPhone' placeholder='手机' />
+    </view>
+    <view class="namebox box">
+      <text><text class="star">* </text>身份证 :</text>
+      <input type="text" bindinput='orderCard' placeholder='身份证' />
+    </view>
+    <view class="namebox box">
+      <picker mode="date" value="{{orderDate}}" start="2018-07-01" end="2037-07-01" bindchange="orderDate">
+        <view class="picker">
+          <text class="star">* </text>出行日期: {{orderDate}}
+        </view>
+      </picker>
+    </view>
+    <!-- 尾部 -->
+    <view class='footer'>
+      <view class='fontTwo' style='flex:0 0 64%'>
+        <text class="fontThree" style='color:#D0021B;'>实付：{{orderInfo.amount?orderInfo.amount:'0.00'}}沅</text>
+      </view>
+      <view bindtap='showDialogBtn' data-order-id="{{orderInfo.orderid}}" data-order-number="{{orderInfo.orderno}}" data-order-type="{{orderInfo.ordertype}}" bindtap='wxpay' class='fontTwo fontThree count' style='color:#ffffff'>
+        付款
+      </view>
+    </view>
+  </view>
+
+  <!-- 第三种 -->
+
+  <view wx:if="{{waystype==1}}">
+    <view class='orderBac' style="display:flex;padding:30rpx;margin-top:20rpx;">
+      <view style='flex:0 0 24%'>
+        <image style='width:140rpx;height:140rpx;background:#ccc' src="{{orderInfo.orderpic?orderInfo.orderpic:'https://img.sahuanka.com/sjCard/images/defaultImg.png'}}" binderror="errImgDetail" data-err-img="{{orderInfo.orderpic}}"></image>
+      </view>
+      <view style='flex:0 0 70%'>
+        <view class='orderFont'>{{creditOrderInfo.activityname}}</view>
+        <!-- <view style='font-size:26rpx;color:#868686'>半年</view> -->
+        <view class='orderFont'>{{creditOrderInfo.amount?creditOrderInfo.amount:'0.00'}}沅</view>
+      </view>
+      <view class='orderFont'>x1</view>
+    </view>
+    <view style='font-size:24rpx;color:#888888;margin-left:30rpx'>
+      <text>温馨提示：</text>
+      <view>会员卡购买及升级不能用赏金抵用</view>
+    </view>
+    <!-- 尾部 -->
+    <view class='footer'>
+      <view class='fontTwo' style='flex:0 0 64%'>
+        <text class="fontThree" style='color:#D0021B;'>实付：{{creditOrderInfo.amount?creditOrderInfo.amount:'0.00'}}沅</text>
+      </view>
+      <view bindtap='showDialogBtn' data-order-id="{{creditOrderInfo.orderid}}" data-order-number="{{creditOrderInfo.orderno}}" bindtap='wxpay' class='fontTwo fontThree count' style='color:#ffffff'>
+        付款
+      </view>
+    </view>
+  </view>
+
+  <!-- 第四种 -->
+  <view wx:if="{{waystype==2}}">
+    <view class='orderBac' style="display:flex;padding:30rpx">
+      <view style='flex:0 0 24%'>
+        <image style='width:140rpx;height:140rpx;background:#ccc' src="{{fromMyOrder.orderpic?fromMyOrder.orderpic:'https://img.sahuanka.com/sjCard/images/defaultImg.png'}}" binderror="errImg" data-err-img="{{fromMyOrder.orderpic}}"></image>
+      </view>
+      <view style='flex:0 0 70%'>
+        <view class='orderFont'>{{fromMyOrder.activityname}}</view>
+        <!-- <view style='font-size:26rpx;color:#868686'>半年</view> -->
+        <view class='orderFont'>{{fromMyOrde.amount}}沅</view>
+      </view>
+      <view class='orderFont'>x1</view>
+    </view>
+    <!-- 尾部 -->
+    <view class='footer'>
+      <view class='fontTwo' style='flex:0 0 64%'>
+        <text class="fontThree" style='color:#D0021B;'>实付：{fromMyOrder.amount?fromMyOrder.amount:'0.00'}}沅</text>
+      </view>
+      <view data-order-id="{{fromMyOrder.orderid}}" data-order-number="{{fromMyOrder.orderno}}" bindtap='wxpay' class='fontTwo fontThree count' style='color:#ffffff'>
+        付款
+      </view>
+    </view>
+  </view>
+
+</view>

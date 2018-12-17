@@ -1,0 +1,96 @@
+<!--pages/profile/profile.wxml-->
+<view class="profile-container">
+    <view  hidden="{{!isHide}}">
+        <view class="userInfo-cell singlelinebox userInfo-cell-img" id="0" bindtap="tap">
+          <text class="userInfo-cell-label">头像</text>
+         <view class="peopleimg">
+            <image src="{{userInfo.avatarurl}}" binderror="errImg" data-err-img="{{userInfo.avatarurl}}"></image>
+        </view>
+        </view>
+         <view class="userInfo-cell singlelinebox" id="1" bindtap="tap"  >
+          <text class="userInfo-cell-label">呢称</text>
+          <text class="userInfo-cell-sublabel">{{userInfo.username?userInfo.username:''}}</text>
+          <view class="nextpageicon"><image src="https://img.sahuanka.com/sjCard/images/right_arrows.png"></image></view>
+        </view>
+         <view class="userInfo-cell singlelinebox" id="2" bindtap="tap">
+          <text class="userInfo-cell-label">家长姓名</text>
+          <text class="userInfo-cell-sublabel">{{userInfo.parentname?userInfo.parentname:'父亲或母亲'}}</text>
+          <view class="nextpageicon"><image src="https://img.sahuanka.com/sjCard/images/right_arrows.png"></image></view>
+        </view>
+         <view class="userInfo-cell singlelinebox" id="3" bindtap="tap">
+          <text class="userInfo-cell-label">孩子姓名</text>
+          <text class="userInfo-cell-sublabel">{{userInfo.dabaoname?userInfo.dabaoname:'一个账户只能一个孩子使用'}}</text>
+          <view class="nextpageicon"><image src="https://img.sahuanka.com/sjCard/images/right_arrows.png"></image></view>
+        </view>
+         <view class="userInfo-cell singlelinebox" id="4" bindtap="tap">
+          <text class="userInfo-cell-label">孩子性别</text>
+          <text class="userInfo-cell-sublabel">{{userInfo.dabaogender?userInfo.dabaogender:''}}</text>
+         <view class="nextpageicon"><image src="https://img.sahuanka.com/sjCard/images/right_arrows.png"></image></view>
+        </view>
+         <view class="userInfo-cell singlelinebox" id="5" bindtap="tap">
+          <text class="userInfo-cell-label">孩子生日</text>
+          <text class="userInfo-cell-sublabel">{{userInfo.dabaobirthday?userInfo.dabaobirthday:'出生年月日'}}</text>
+          <view class="nextpageicon"><image src="https://img.sahuanka.com/sjCard/images/right_arrows.png"></image></view>
+        </view>
+         <view class="userInfo-cell singlelinebox"  bindtap="addMan">
+          <text class="userInfo-cell-label">地址管理</text>
+          <view class="nextpageicon"><image src="https://img.sahuanka.com/sjCard/images/right_arrows.png"></image></view>
+        </view>
+    </view>
+    <view class="modifyoutter" hidden="{{isHide1}}">
+          <input type="text" bindinput='getNameVal' placeholder='请输入昵称' class="nameVal" value="{{userInfo.username}}"></input>
+         <!-- <view class="surebtn" bindtap='modifyName'  data-name-id="username">确定</view>
+          -->
+    </view>
+    <view class="modifyoutter" hidden="{{isHide1}}">
+        <button style="color: white; background-color: #f5bf00; width:100%;"   class="surebtn"  bindtap='modifyName' >确定</button>
+        </view>
+
+
+    <view class="modifyoutter" hidden="{{isHide2}}">
+          <input type="text" bindinput='getParentNameVal' placeholder='请输入父亲或母亲姓名' class="nameVal" value="{{userInfo.parentname}}"></input>
+    </view>
+    <view class="modifyoutter" hidden="{{isHide2}}">
+        <button style="color: white; background-color: #f5bf00; width:100%;"   class="surebtn"  bindtap='modifyParentName' >确定</button>
+    </view>
+
+
+    <view class="modifyoutter" hidden="{{isHide3}}">
+          <input type="text" bindinput='getDabaoNameVal' placeholder='请输入孩子姓名' class="nameVal" value="{{userInfo.dabaoname}}"></input>
+    </view>
+<view class="modifyoutter" hidden="{{isHide3}}">
+        <button style="color: white; background-color: #f5bf00; width:100%;"   class="surebtn"  bindtap='modifyDabaoName' >确定</button>
+    </view>
+
+    <view class="modifyoutter" hidden="{{isHide4}}">
+          <picker bindchange="getDabaoGenderVal" value="{{genderIndex}}" range="{{gender}}">
+            <view class="picker">
+              请选择孩子性别：{{userInfo.dabaogender}}
+            </view>
+          </picker>
+    </view>
+<view class="modifyoutter" hidden="{{isHide4}}">
+        <button style="color: white; background-color: #f5bf00; width:100%;"   class="surebtn"  bindtap='modifyDabaoGender' >确定</button>
+    </view>
+
+    <view class="modifyoutter" hidden="{{isHide5}}">
+           <picker mode="date" value="{{userInfo.dabaobirthday}}" start="2000-07-01" end="2037-07-01" bindchange="getDabaoBirthdayVal">
+            <view class="picker">
+               请选择孩子生日: {{userInfo.dabaobirthday}}
+            </view>
+          </picker>
+    </view>
+<view class="modifyoutter" hidden="{{isHide5}}">
+        <button style="color: white; background-color: #f5bf00; width:100%;"   class="surebtn"  bindtap='modifyDabaoBirthday' >确定</button>
+    </view>
+    <view class="modifyoutter" hidden="{{isHide9}}">
+          <input type="text" bindinput='getAddressVal' placeholder='请输入地址精确到街道或小区即可' class="nameVal" value="{{userInfo.address}}"></input>
+    </view>
+    <view class="modifyoutter" hidden="{{isHide9}}">
+        <button style="color: white; background-color: #f5bf00; width:100%;"   class="surebtn"  bindtap='modifyAddress' >确定</button>
+    </view>
+</view>
+
+
+ <!--绑定手机号弹窗-->
+ <bindphone isShow="{{showPhoneModal}}" bindphone="getBindInfo"></bindphone> 

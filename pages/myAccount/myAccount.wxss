@@ -1,0 +1,76 @@
+/* pages/myAccount/myAccount.wxss */
+page{
+  min-height:100%;
+  background-color:#f6f6f6;
+}
+.page{
+  padding-top:50rpx;
+  box-sizing:border-box;
+}
+.detailbg{
+  width:670rpx;
+  height:180rpx;
+  margin:0 auto;
+  position:relative;
+  margin-bottom:50rpx;
+}
+.detailbg image{
+  width:100%;
+  height:100%;
+}
+.allinbox{
+  position:absolute;
+  top:0rpx;
+  left:0rpx;
+  width:100%;
+  height:100%;
+  padding:0rpx 28rpx;
+  box-sizing:border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items:center;
+}
+view.exescore{
+  color:#333333;
+  font-size:30rpx;
+}
+.exescore text{
+  font-size:30rpx;
+}
+.lookdealbtn{
+  color:#fff;
+  font-size:26rpx;
+  margin-top:26rpx;
+  margin-right:36rpx;
+}
+.lookdealbtn image{
+  width:13rpx;
+  height:22rpx;
+  margin-left:12rpx;
+}
+view.rightbox{
+  width:120rpx;
+height:60rpx;
+text-align:center;
+color:#fff;
+line-height:60rpx;
+border-radius:8rpx;
+background-color:#f5bf00;
+font-size:25rpx;
+letter-spacing:2rpx;
+}
+.accountlayerbox{
+  display:flex;
+}
+.maintext{
+  padding:0rpx 30rpx;
+  color:#333;
+  line-height:50rpx;
+}
+.maintext view{
+  font-size:28rpx;
+  text-indent: 56rpx;
+}
+.maintext text{
+  font-size:32rpx;
+}

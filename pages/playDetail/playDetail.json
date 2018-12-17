@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "活动详情",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "bindphone": "../../components/bindPhone/bindPhone"
+  }
+}

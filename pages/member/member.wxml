@@ -1,0 +1,115 @@
+<!--pages/member/member.wxml-->
+<view>
+  <!--顶部头像和信息-->
+  <view class="yellowbox">
+    <view class="peopleimg" bindtap='skip_myinfo' wx:if="{{userInfo.avatarurl}}">
+        <image src="{{userInfo.avatarurl}}" binderror="errImg" data-err-img="{{userInfo.avatarurl}}"></image>
+    </view>
+    <!--当头像为空时使用默认图片-->
+    <view class="peopleimg" bindtap='skip_myinfo' wx:else>
+        <image src="https://img.sahuanka.com/sjCard/images/defaultImage.png"></image>
+    </view>
+    <view class="toprightbox">
+    <view>
+      <view class="rightupbox">
+        <text>{{userInfo.username?userInfo.username:'用户'}}</text>
+       
+      </view>
+      <view class="rightdownbox">
+          <!--会员-->
+          <view class="memberlevel" wx:if="{{userInfo}}">
+              <image src="{{userInfo.headimg}}" binderror="errImg" data-err-img="{{userInfo.avatarurl}}"></image>{{userInfo.gradename?userInfo.gradename:''}}
+          </view>
+          <!-- <view class="memberlevel" wx:else>
+              <image src="/images/defaultImg.png"></image>{{userInfo.gradename?userInfo.gradename:''}}
+          </view> -->
+          <!--信用分-->
+          <!-- <view class="arrowbox cardscore" bindtap='skip_creditScore'>
+            信用分：<text>{{userInfo.credit}}</text>分 <image class="arrowimg" src="/images/rightbutton.jpg"></image>
+          </view> -->
+          <view class="arrowbox" bindtap='skip_memberPromote'>会员升级 <image class="arrowimg" src="https://img.sahuanka.com/sjCard/images/rightbutton.jpg"></image></view>
+      </view>
+      </view>
+        <image style=" width:74rpx;height:88rpx;margin-left:136rpx;margin-top:28rpx;" src='http://img.sahuanka.com/sjCard/images/reward.png' bindtap='skip_invite_bonus'></image>
+    </view>
+  </view>
+  <!--选项-->
+  <view>
+    <!--上面4个选项-->
+    <view class="upfourtions">
+      <view class="singlelinebox" bindtap='skip_myAccount'>
+        <view class="iconbox">
+          <image src="https://img.sahuanka.com/sjCard/images/account.png"></image>我的账户
+        </view>
+        <view class="nextpageicon"><image src="https://img.sahuanka.com/sjCard/images/right_arrows.png"></image></view>
+      </view>
+      <view class="singlelinebox" bindtap='skip_myinfo'>
+        <view class="iconbox">
+          <image src="https://img.sahuanka.com/sjCard/images/info.png"></image>我的资料
+        </view>
+        <view class="nextpageicon"><image src="https://img.sahuanka.com/sjCard/images/right_arrows.png"></image></view>
+      </view>
+      <view class="singlelinebox" bindtap='skip_myTask'>
+          <view class="iconbox">
+            <image src="https://img.sahuanka.com/sjCard/images/task.png"></image>我的任务
+          </view>
+          <view class="nextpageicon"><image src="https://img.sahuanka.com/sjCard/images/right_arrows.png"></image></view>
+      </view>
+      <view class="singlelinebox" bindtap='skip_myOrders'>
+          <view class="iconbox">
+            <image src="https://img.sahuanka.com/sjCard/images/orders.png"></image>我的订单
+          </view>
+          <view class="nextpageicon"><image src="https://img.sahuanka.com/sjCard/images/right_arrows.png"></image></view>
+      </view>
+       
+      <view class="singlelinebox" bindtap='skip_myAttention'>
+        <view class="iconbox">
+          <image src="https://img.sahuanka.com/sjCard/images/care.png"></image>我的关注
+        </view>
+        <view class="nextpageicon"><image src="https://img.sahuanka.com/sjCard/images/right_arrows.png"></image></view>
+      </view>
+      <view class="singlelinebox" bindtap='skip_myMessage'>
+          <view class="iconbox">
+            <image src="https://img.sahuanka.com/sjCard/images/WechatIMG188.png"></image>我的消息
+          </view>
+          <view class="nextpageicon"><image src="https://img.sahuanka.com/sjCard/images/right_arrows.png"></image></view>
+      </view>
+    </view>
+    <!--下面三个选项-->
+    <view class="downthreeoptions">
+        <view class="singlelinebox" bindtap='skip_apply' wx:if="{{userInfo.businesstype==0}}">
+          <view class="iconbox">
+            <image src="https://img.sahuanka.com/sjCard/images/apply.png"></image>申请成为商家
+          </view>
+          <view class="nextpageicon"><image src="https://img.sahuanka.com/sjCard/images/right_arrows.png"></image></view>
+        </view>
+
+        <!-- 我是试用商家 -->
+        <view class="singlelinebox" bindtap='skip_freebusiness' wx:if="{{userInfo.businesstype==1}}">
+          <view class="iconbox">
+            <image src="https://img.sahuanka.com/sjCard/images/apply.png"></image>我是商家
+          </view>
+          <view class="nextpageicon"><image src="https://img.sahuanka.com/sjCard/images/right_arrows.png"></image></view>
+        </view>
+
+        <!-- 我是付费商家 -->
+        <view class="singlelinebox" bindtap='skip_paybusiness' wx:if="{{userInfo.businesstype==2}}">
+          <view class="iconbox">
+            <image src="https://img.sahuanka.com/sjCard/images/apply.png"></image>我是商家
+          </view>
+          <view class="nextpageicon"><image src="https://img.sahuanka.com/sjCard/images/right_arrows.png"></image></view>
+        </view>
+
+        <view class="singlelinebox" bindtap='skip_scanCode'>
+          <view class="iconbox">
+            <image src="https://img.sahuanka.com/sjCard/images/scan.png"></image>扫一扫
+          </view>
+          <view class="nextpageicon"><image src="https://img.sahuanka.com/sjCard/images/right_arrows.png"></image></view>
+        </view>
+        <button open-type="contact" type='contact' >联系客服</button> 
+        <view class='linktime'>联系时间：工作日9:00-18:00</view>
+    </view>
+  </view>
+</view>
+<!--绑定手机号弹窗-->
+<bindphone isShow="{{showPhoneModal}}" bindphone="getBindInfo"></bindphone>

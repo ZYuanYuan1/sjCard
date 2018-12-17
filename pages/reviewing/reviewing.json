@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "确认提交",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "bindphone": "../../components/bindPhone/bindPhone"
+  }
+}

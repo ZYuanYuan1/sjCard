@@ -1,0 +1,25 @@
+<!--pages/score_charge/score_charge.wxml-->
+<view class="page">
+  <view class="whitebox">
+     <!--储蓄卡-->
+    <!-- <view class="cardbox">
+      <view class="leftbox">储蓄卡</view>
+      <view class="rightbox">
+        <view class="bankname">工商银行（6300）</view>
+        <view class="maxmoney">单日交易限额￥50000.00</view>
+      </view>
+    </view> -->
+    <!--充值金额-->
+    <view class="moneybox">
+      <view class="textintro">充值金额</view>
+      <view class="passinput"><text>￥</text><input type="number" focus='true' value="{{cashVal}}" bindinput="getCashVal"></input></view>
+    </view>   
+    <!--下一步-->
+    <view class="btnbox">
+      <button bindtap='gotocharge'>下一步</button>
+    </view>
+  </view>  
+</view>
+ <!--绑定手机号弹窗-->
+<bindphone isShow="{{showPhoneModal}}" bindphone="getBindInfo"></bindphone>
+

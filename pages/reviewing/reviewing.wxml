@@ -1,0 +1,14 @@
+<!--pages/reviewing/reviewing.wxml-->
+<view class='page'>
+  
+ <view class='backview'> 
+  <image src="https://img.sahuanka.com/sjCard/images/ok.png" class="alertimg ok"></image>
+    <view class='reviewing'>审核中</view>
+  <image src="https://img.sahuanka.com/sjCard/images/Line.png" class="alertimg line"></image>
+  <view class="text" bindtap='toggleMessage'>您的资料已经提交，请耐心等待审核结果！一般审核时间为3-7个工作日
+    <view>(审核结果将在我的消息中查看)</view>
+  </view>
+</view>
+  
+ 
+</view>

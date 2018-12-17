@@ -1,0 +1,11 @@
+/* pages/cash_record/cash_record.wxss */
+@import "/pages/dealDetail/dealDetail.wxss"
+
+
+.dealrightbox{
+  font-size:30rpx;
+  color:#f3362b;
+  flex:0 0 260rpx;
+  text-align:right;
+}
+ 

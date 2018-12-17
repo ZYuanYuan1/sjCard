@@ -1,0 +1,44 @@
+/* pages/address_add/address_add.wxss */
+page{
+  background: #F8F8F8
+}
+.addr_content{
+  display: flex;
+  background: #ffffff;
+  margin-top: 20rpx
+}
+.addr{
+  flex: 1
+}
+.addr_right{
+  flex: 0 0 10%
+}
+.addr_left{
+  padding: 15rpx 0 30rpx 30rpx
+}
+.enable{
+  width: 64rpx;
+  height: 40rpx;
+  border-radius: 8rpx;
+  background: #F5BF00;
+  color: #ffffff;
+  padding-left: 20rpx
+}
+.top{
+  display: inline;
+  font-size: 32rpx;
+  padding-right:20rpx;
+
+}
+.add{
+  font-size: 22rpx
+}
+.comment_footer button{
+  position: fixed;
+  width: 670rpx;
+  height: 80rpx;
+  bottom: 35rpx;
+  left: 43rpx;
+  background: #F5BF00;
+  color: #ffffff
+}
