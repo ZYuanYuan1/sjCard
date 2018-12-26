@@ -45,9 +45,12 @@
               </view>
           </view>
           </view>
-    <!-- 第三个 -->
+    <!-- 第三个 --> 
             <view class='model'>
-              <view class="taskheadtext taskheadtextThree teskfont">任务时间：<text style='font-size24rpx;color:#333333'>{{activityInfo.shelftime}}</text></view>
+              <view class="taskheadtext taskheadtextThree teskfont">任务时间：
+              <text style='font-size24rpx;color:#333333' wx:if='{{activityInfo.jobTimeType==2}}'>{{activityInfo.shelftime}}</text>
+                <text style='font-size24rpx;color:#333333' wx:if='{{activityInfo.jobTimeType==1}}'>截至{{activityInfo.endtime}}都可预约</text>
+            </view>
                <view class="taskitem">
                   <text class='teskfont'>适合年龄：<text class="totalscore" style='font-size24rpx;color:#333333'>{{activityInfo.starage}}-{{activityInfo.endage}}周岁</text></text>
               </view>
