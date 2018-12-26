@@ -259,7 +259,10 @@ Page({
               var hostInfo = res.data.business;//商家信息
               var activityInfo = res.data.businessactivity;//商家活动
               var saving = res.data.isAttention;
-              console.log(activityInfo);
+              if (activityInfo.shelftime != null && activityInfo.endtime != null) {
+                activityInfo.shelftime = activityInfo.shelftime.substring(0, 16);
+                activityInfo.endtime = activityInfo.endtime.substring(0, 16);
+              }
               that.setData({ 'businessInfo': hostInfo, 'activityInfo': activityInfo, 'saving': saving });
               //富文本
               var article = activityInfo.content;
