@@ -37,5 +37,6 @@
   </view>
   <view class="btnbox">
     <button open-type="share" hover-class="none" hover-stop-propagation="true">邀请好友</button>
+    <!-- <button>生成分享海报</button> -->
   </view>
 </view>

@@ -33,7 +33,7 @@
                                   <text class="rightstatus" wx:if="{{item.state==9}}">已完成</text>
                                 </view>
                                   <view class="orderrightdownbox"  wx:if="{{item.state==2}}">
-                                    <view>需使用：<text>{{item.integral}}</text>沅</view>
+                                    <view>需使用：<text>{{item.integral}}</text>赏金</view>
                                     <view><button data-order-info="{{item}}" bindtap='gotopay'>支付</button></view>
                                   </view>
                                   <view class="orderrightdownbox" wx:if="{{item.state==3}}">
@@ -41,11 +41,11 @@
                                     <view><button bindtap="showDialogBtn" data-qrcode-url="{{item.qrcode}}" data-order-number="{{item.orderno}}">电子券</button></view>
                                   </view>
                                   <view class="orderrightdownbox" wx:if="{{item.state==7}}">
-                                    <view>已使用：<text>{{item.integral}}</text>沅</view>
+                                    <view>已使用：<text>{{item.integral}}</text>赏金</view>
                                     <view><button bindtap='pop_evaluate' hover-class="none" data-order-id="{{item.orderid}}" data-business-activity-id="{{item.businessactivityid}}">评价</button></view>
                                   </view>
                                   <view class="orderrightdownbox" wx:if="{{item.state==9}}">
-                                      <view>已使用：<text>{{item.integral}}</text>沅</view>
+                                      <view>已使用：<text>{{item.integral}}</text>赏金</view>
                                   </view>
                               </view>
                            </view>                                            
@@ -65,7 +65,7 @@
                                     <text class="rightstatus" wx:if="{{item.state==2}}">待支付</text>
                                   </view>
                                   <view class="orderrightdownbox">
-                                    <view>需使用：<text>{{item.integral}}</text>沅</view>
+                                    <view>需使用：<text>{{item.integral}}</text>赏金</view>
                                     <view><button data-order-info="{{item}}" bindtap='gotopay'>支付</button></view>
                                   </view>
                                 </view>
@@ -105,7 +105,7 @@
                                     <text class="rightstatus">待评价</text>
                                   </view>
                                   <view class="orderrightdownbox">
-                                    <view>已使用：<text>{{item.integral}}</text>沅</view>
+                                    <view>已使用：<text>{{item.integral}}</text>赏金</view>
                                     <view>
                                         <button bindtap='pop_evaluate' hover-class="none" data-order-id="{{item.orderid}}" data-business-activity-id="{{item.businessactivityid}}" >评价</button>
                                     </view>

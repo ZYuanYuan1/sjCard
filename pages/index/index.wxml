@@ -98,7 +98,7 @@
               <view class="headline">{{item.activityname}}</view>
               <view class="textdetail">{{item.description}}</view>
               <view class="integralbox">赏金：
-              <text class="integral"><text>Š {{item.amount}}</text> 沅</text>
+              <text class="integral"><text>Š {{item.amount}}</text> </text>
               
               <!-- <text class='distance'>{{filters.toFix(item.distance)}}km</text>  -->
                 <text class='wtiming' wx:if='{{item.jobTimeType==2}}'>任务时间：{{item.shelftime}}</text>

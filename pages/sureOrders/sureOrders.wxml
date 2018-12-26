@@ -12,7 +12,7 @@
         </view>
     </view>
     <view class="computemoney">
-        <view class='moneylineone'>需扣除：<text>{{orderInfo.integral?orderInfo.integral:'0'}}</text>沅</view>
+        <view class='moneylineone'>需扣除：<text>{{orderInfo.integral?orderInfo.integral:'0'}}</text>赏金</view>
         <view class='moneylinetwo'>还需付：<text>￥{{orderInfo.amount?orderInfo.amount:'0.00'}}</text></view>
     </view>
      <view class="namebox">
@@ -35,7 +35,7 @@
         </view>
     </view>
     <view class="computemoney">
-        <view class='moneylineone'>需扣除：<text>{{orderInfo.integral?orderInfo.integral:'0'}}</text>沅</view>
+        <view class='moneylineone'>需扣除：<text>{{orderInfo.integral?orderInfo.integral:'0'}}</text>赏金</view>
         <view class='moneylinetwo'>还需付：<text>￥{{orderInfo.amount?orderInfo.amount:'0.00'}}</text></view>
     </view>
     <view class="namebox">

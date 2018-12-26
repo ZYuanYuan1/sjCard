@@ -37,7 +37,7 @@
               <view class="taskheadtext taskheadtextThree" style='display:flex;font-size:28rpx;'>{{activityInfo.activityname}}</view>
           <view>
                <view class="taskitem" style='display:flex'>
-                  <text style='flex:0 0 75%;'>赏金：<text class="totalscore">Š {{activityInfo.amount}}</text> 沅</text>
+                  <text style='flex:0 0 75%;'>赏金：<text class="totalscore">Š {{activityInfo.amount}}</text> </text>
                   <view>
                  <image src='/images/copy.png' class='shoppingImg'></image>
                  <text style='font-size:24rpxcolor:#999999;'>剩余{{activityInfo.surpluscount}}人</text>

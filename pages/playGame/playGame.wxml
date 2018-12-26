@@ -15,7 +15,7 @@
           <view class="singlebigbox" bindtap='skip_playDetail' data-business-id="{{item.businessactivityid}}"  data-activity-type="{{item.activitytype}}">
             <view class="detailImgbox">
               <view class="singleimgbox"><image src="{{item.activitypic}}" data-index="{{index}}" binderror="errImg" data-err-img="homeList[{{index}}].activitypic"></image></view>
-              <view class="labelInt">Š <text>{{item.amount}}</text> 沅</view>
+              <view class="labelInt">Š <text>{{item.amount}}</text> </view>
             </view>
             <view>
               <view class="headmain">{{item.activityname}}</view>

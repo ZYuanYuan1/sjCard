@@ -43,7 +43,7 @@
               <view class="taskheadtext">{{activityInfo.activityname}}</view>
                <view class="taskitem taskitemone">
                   <image src="https://img.sahuanka.com/sjCard/images/money.png"></image> 
-                  <text>价格：<text class="totalscore">{{activityInfo.amount}}</text> 沅</text>
+                  <text>价格：<text class="totalscore">{{activityInfo.amount}}</text> 赏金</text>
               </view>
               <view class="taskitem taskitemlast">
                   <image src="https://img.sahuanka.com/sjCard/images/location.png"></image> 

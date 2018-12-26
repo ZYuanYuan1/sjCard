@@ -22,15 +22,15 @@
     <view class='orderBac orderPadd orderMar orderFont'>
       <view class='orderItems'>
         <view class='orderItem'>商品金额</view>
-        <view>{{orderInfo.amount}}沅</view>
+        <view>{{orderInfo.amount}}</view>
       </view>
       <view class='orderItems' style='border-bottom:2rpx solid #e4e4e4;border-top:2rpx solid #e4e4e4'>
         <view class='orderItem'>可抵扣赏金</view>
-        <view>{{orderInfo.integral?orderInfo.integral:'0'}}沅</view>
+        <view>{{orderInfo.integral?orderInfo.integral:'0'}}</view>
       </view>
       <view class='orderItems'>
         <view class='orderItem'>运费</view>
-        <view>0沅</view>
+        <view>0</view>
       </view>
     </view>
     <view class="orderBac orderPadd orderFont orderItems orderMar">
@@ -44,14 +44,14 @@
       <view style='flex:0 0 70%'>
         <view class='orderFont'>{{orderInfo.activityname}}</view>
         <!-- <view style='font-size:26rpx;color:#868686'>半年</view> -->
-        <view class='orderFont'>{{orderInfo.amount}}沅</view>
+        <view class='orderFont'>{{orderInfo.amount}}</view>
       </view>
       <view class='orderFont'>x1</view>
     </view>
     <!-- 尾部 -->
     <view class='footer'>
       <view class='fontTwo' style='flex:0 0 64%'>
-        <text class="fontThree" style='color:#D0021B;'>实付：{{orderInfo.amount?orderInfo.amount:'0.00'}}沅</text>
+        <text class="fontThree" style='color:#D0021B;'>实付：{{orderInfo.amount?orderInfo.amount:'0.00'}}</text>
       </view>
       <view bindtap='showDialogBtn' data-order-id="{{orderInfo.orderid}}" data-order-number="{{orderInfo.orderno}}" data-order-type="{{orderInfo.ordertype}}" bindtap='wxpay' class='fontTwo fontThree count' style='color:#ffffff'>
         付款
@@ -64,15 +64,15 @@
     <view class='orderBac orderPadd orderMar orderFont'>
       <view class='orderItems'>
         <view class='orderItem'>商品金额</view>
-        <view>{{orderInfo.amount}}沅</view>
+        <view>{{orderInfo.amount}}</view>
       </view>
       <view class='orderItems' style='border-bottom:2rpx solid #e4e4e4;border-top:2rpx solid #e4e4e4'>
         <view class='orderItem'>可抵扣赏金</view>
-        <view>{{orderInfo.integral?orderInfo.integral:'0'}}沅</view>
+        <view>{{orderInfo.integral?orderInfo.integral:'0'}}</view>
       </view>
       <view class='orderItems'>
         <view class='orderItem'>运费</view>
-        <view>0沅</view>
+        <view>0</view>
       </view>
     </view>
     <view class="orderBac orderPadd orderFont orderItems orderMar">
@@ -86,7 +86,7 @@
       <view style='flex:0 0 70%'>
         <view class='orderFont'>{{orderInfo.activityname}}</view>
         <!-- <view style='font-size:26rpx;color:#868686'>半年</view> -->
-        <view class='orderFont'>{{orderInfo.amount}}沅</view>
+        <view class='orderFont'>{{orderInfo.amount}}</view>
       </view>
       <view class='orderFont'>x1</view>
     </view>
@@ -112,7 +112,7 @@
     <!-- 尾部 -->
     <view class='footer'>
       <view class='fontTwo' style='flex:0 0 64%'>
-        <text class="fontThree" style='color:#D0021B;'>实付：{{orderInfo.amount?orderInfo.amount:'0.00'}}沅</text>
+        <text class="fontThree" style='color:#D0021B;'>实付：{{orderInfo.amount?orderInfo.amount:'0.00'}}</text>
       </view>
       <view bindtap='showDialogBtn' data-order-id="{{orderInfo.orderid}}" data-order-number="{{orderInfo.orderno}}" data-order-type="{{orderInfo.ordertype}}" bindtap='wxpay' class='fontTwo fontThree count' style='color:#ffffff'>
         付款
@@ -130,7 +130,7 @@
       <view style='flex:0 0 70%'>
         <view class='orderFont'>{{creditOrderInfo.activityname}}</view>
         <!-- <view style='font-size:26rpx;color:#868686'>半年</view> -->
-        <view class='orderFont'>{{creditOrderInfo.amount?creditOrderInfo.amount:'0.00'}}沅</view>
+        <view class='orderFont'>{{creditOrderInfo.amount?creditOrderInfo.amount:'0.00'}}</view>
       </view>
       <view class='orderFont'>x1</view>
     </view>
@@ -141,7 +141,7 @@
     <!-- 尾部 -->
     <view class='footer'>
       <view class='fontTwo' style='flex:0 0 64%'>
-        <text class="fontThree" style='color:#D0021B;'>实付：{{creditOrderInfo.amount?creditOrderInfo.amount:'0.00'}}沅</text>
+        <text class="fontThree" style='color:#D0021B;'>实付：{{creditOrderInfo.amount?creditOrderInfo.amount:'0.00'}}</text>
       </view>
       <view bindtap='showDialogBtn' data-order-id="{{creditOrderInfo.orderid}}" data-order-number="{{creditOrderInfo.orderno}}" bindtap='wxpay' class='fontTwo fontThree count' style='color:#ffffff'>
         付款
@@ -158,14 +158,14 @@
       <view style='flex:0 0 70%'>
         <view class='orderFont'>{{fromMyOrder.activityname}}</view>
         <!-- <view style='font-size:26rpx;color:#868686'>半年</view> -->
-        <view class='orderFont'>{{fromMyOrde.amount}}沅</view>
+        <view class='orderFont'>{{fromMyOrde.amount}}</view>
       </view>
       <view class='orderFont'>x1</view>
     </view>
     <!-- 尾部 -->
     <view class='footer'>
       <view class='fontTwo' style='flex:0 0 64%'>
-        <text class="fontThree" style='color:#D0021B;'>实付：{fromMyOrder.amount?fromMyOrder.amount:'0.00'}}沅</text>
+        <text class="fontThree" style='color:#D0021B;'>实付：{fromMyOrder.amount?fromMyOrder.amount:'0.00'}}</text>
       </view>
       <view data-order-id="{{fromMyOrder.orderid}}" data-order-number="{{fromMyOrder.orderno}}" bindtap='wxpay' class='fontTwo fontThree count' style='color:#ffffff'>
         付款

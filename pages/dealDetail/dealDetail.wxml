@@ -8,7 +8,7 @@
           <view>{{item.createdate}}</view>
         </view>
         <view class="dealrightbox">
-          {{item.amount?item.amount:'0'}} 沅
+          {{item.amount?item.amount:'0'}} 赏金
         </view>
       </view>
     </block>

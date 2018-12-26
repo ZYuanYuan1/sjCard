@@ -15,8 +15,8 @@
         <view class="singlebigbox" bindtap='skip_courseDetail' data-business-id="{{item.businessactivityid}}" data-activity-type="{{item.activitytype}}" data-bid="{{item.businessid}}">
           <view class="detailImgbox">
             <view class="singleimgbox"><image src="{{item.activitypic}}" data-index="{{index}}" binderror="errImg" data-err-img="homeList[{{index}}].activitypic"></image></view>
-            <view class="labelInt" wx:if="{{item.activitytype==1}}">悬赏 Š <text>{{item.amount}}</text>沅</view>
-            <view class="labelInt" wx:else> Š <text>{{item.amount}}</text>沅</view>
+            <view class="labelInt" wx:if="{{item.activitytype==1}}">悬赏 Š <text>{{item.amount}}</text></view>
+            <view class="labelInt" wx:else> Š <text>{{item.amount}}</text></view>
           </view>
           <view>
             <view class="headmain">{{item.activityname}}</view>
