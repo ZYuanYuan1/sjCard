@@ -1,53 +1,56 @@
-<!--pages/memberPromote/memberPromote.wxml-->
-<view class="page">   
+<!-- pages/memberPromote/memberPromote.wxml -->
+<view class="page">
   <radio-group class="radio-group" bindchange="radioChange">
-            <label class="radio radiosingle" wx:for="{{radioItems}}" wx:key="{{item.value}}">
-              <radio value="{{item.value}}" checked="{{item.checked}}" disabled="{{item.disabled}}"/> 
-              <view class="singlememberbox">
-                  <!--单选框和图片-->
-                  <view class="leftmemberbox" wx:if="{{currgrade==item.permoney}}">                
-                      <image src="https://img.sahuanka.com/sjCard/images/currselected.png" class="selradiodot"></image>      
-                      <image src="{{item.image}}" class="levelimg"></image>
-                  </view> 
-                  <view class="leftmemberbox" wx:elif="{{currgrade>item.permoney}}">         
-                      <image src="{{null}}" class="selradiodot"></image>                           
-                      <image src="{{item.image}}" class="levelimg"></image>
-                  </view>
-                  <view class="leftmemberbox" wx:else>                                             
-                       <image src="https://img.sahuanka.com/sjCard/images/selected.png" class="selradiodot" wx:if="{{item.showYellow}}"></image> 
-                        <image src="https://img.sahuanka.com/sjCard/images/noselected.png" class="selradiodot" wx:else></image>
-                      <image src="{{item.image}}" class="levelimg"></image>
-                  </view>
-                  <!--右侧会员详情说明-->
-                  <view class="rightmemberbox">
-                      <view class="upmemberbox">
-                        <view>{{item.name}}</view>
-                        <view class="redprice"><text>{{item.permoney}}</text>元/年</view>
-                      </view>
-                      <view class="downmemeberbox">{{item.text}}</view>
-                  </view>
-              </view>
-            </label>
+    <label class="radio radiosingle" wx:for="{{radioItems}}" wx:key="{{item.value}}">
+      <radio value="{{item.value}}" checked="{{item.checked}}" disabled="{{item.disabled}}" />
+      <view class="singlememberbox">
+        <!-- 单选框和图片 -->
+        <view class="leftmemberbox" wx:if="{{currgrade==item.permoney}}">
+          <image src="https://img.sahuanka.com/sjCard/images/currselected.png" class="selradiodot"></image>
+          <image src="{{item.image}}" class="levelimg"></image>
+        </view>
+        <view class="leftmemberbox" wx:elif="{{currgrade>item.permoney}}">
+          <image src="{{null}}" class="selradiodot"></image>
+          <image src="{{item.image}}" class="levelimg"></image>
+        </view>
+        <view class="leftmemberbox" wx:else>
+          <image src="https://img.sahuanka.com/sjCard/images/selected.png" class="selradiodot" wx:if="{{item.showYellow}}"></image>
+          <image src="https://img.sahuanka.com/sjCard/images/noselected.png" class="selradiodot" wx:else></image>
+          <image src="{{item.image}}" class="levelimg"></image>
+        </view>
+        <!-- 右侧会员详情说明 -->
+        <view class="rightmemberbox">
+          <view class="upmemberbox">
+            <view>{{item.name}}</view>
+            <view class="redprice">
+              <text>{{item.permoney}}</text>
+              元/年
+            </view>
+          </view>
+          <view class="downmemeberbox">{{item.text}}</view>
+        </view>
+      </view>
+    </label>
   </radio-group>
-  <!--底部按钮-->
+  <!-- 底部按钮 -->
   <view class="btnbox" wx:if="{{currgrade<999}}">
     <button bindtap='sureBuyMember'>确定购买</button>
   </view>
   <view class="btnbox cantBuyBtn" wx:else>
     <button bindtap='buytip'>确定购买</button>
   </view>
-
-  <view  class='maintext'>
-          <text>新会员大礼包：</text> 
-            <view>百元卡可获千元大礼包，千元卡可获万元大礼包！查看大礼包!请复制链接到浏览器打开
-<text selectable='true' >
-https://jinshuju.net/f/HvkI4z
-  </text></view>
-  <view  class='maintext'>
-  <text>注:新购卡会员请在24小时后 三个月以内进入以上链接选择大礼包。</text></view>
-          </view>
-
-   <!--支付弹框-->
+  <view class='maintext'>
+    <!-- <text>新会员大礼包：</text> -->
+    <view>
+      <!-- 百元卡可获千元大礼包，千元卡可获万元大礼包！查看大礼包!请复制链接到浏览器打开 -->
+      前1000名会员赠送大礼包活动已结束，更多咨询请关注“早教卡”小程序
+      <!-- <text selectable='true'>https://jinshuju.net/f/HvkI4z</text> -->
+    </view>
+    <!-- <view class='maintext'>
+      <text>注:新购卡会员请在24小时后 三个月以内进入以上链接选择大礼包。</text>
+    </view> -->
+  </view>
+  <!-- 支付弹框 -->
   <!-- <view class="modal-mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
   <view class="modal-dialog" wx:if="{{showModal}}">
         <view class="modal-title">
@@ -76,7 +79,7 @@ https://jinshuju.net/f/HvkI4z
             interval="{{inputData.interval}}">
             </paySix>
         </view>
-  </view>  -->
-  <!--绑定手机号弹窗-->
+  </view> -->
+  <!-- 绑定手机号弹窗 -->
   <bindphone isShow="{{showPhoneModal}}" bindphone="getBindInfo"></bindphone>
 </view>

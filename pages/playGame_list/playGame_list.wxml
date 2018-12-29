@@ -1,6 +1,6 @@
-<!--pages/playGame_list/playGame_list.wxml-->
+<!-- pages/playGame_list/playGame_list.wxml -->
 <view class='plList_con'>
-   <view class="type-container" style="position:fixed">
+    <view class="type-container" style="position:fixed">
         <scroll-view class="type-navbar" scroll-x="true">
             <view class="type-box" wx:for-items="{{categories}}" wx:key="id">
                 <view id="{{item.productMenuId}}" class="type-navbar-item {{activeCategoryId == item.productMenuId ? 'type-item-on' : ''}}" bindtap="tabClick">
@@ -8,36 +8,39 @@
                 </view>
             </view>
         </scroll-view>
-          <view class='{{activeCategoryId==0?"search-viewc":"search-view"}}'>
-              <view  id='{{activeCategoryId}}' class="{{activeCategoryId==0?'change':'search_cl'}}" bindtap='searchEnd'>
-                 <text>分类</text>
-                 <image src='https://img.sahuanka.com/sjCard/images/3.png' style="width:18rpx;height:10rpx;margin-left:20rpx"></image>
-              </view>
-              <!-- <image src='/images/3.png' style="width:18rpx;height:10rpx"></image> -->
-    <view class='{{activeCategoryId==0?"search-contentc":"search-content"}}'>
-      <image src="https://img.sahuanka.com/sjCard/images/2.png" class="search-icon" />
-      <input placeholder="请输入搜索内容"  placeholder-class="search_pl" class="search-input" maxlength="30" confirm-type="搜索" value ='{{searchInput}}'bindconfirm='toSearch'>
-      </input>
-    </view>
-  </view>
-  <view hidden='{{show}}'>
-   <view class='search_aCon' wx:for='{{categories}}' wx:for-item='items' id="{{items.productMenuId}}" style='display:{{activeCategoryId == items.productMenuId&&show==false ? "block":"none"}}' >
-        <view class="search_alert" id="{{item.productMenuId}}"  bindtap='searchEnd' wx:for="{{items.subList}}">{{item.name}}</view>
-    </view>
-  </view>
+        <view class='{{activeCategoryId==0?"search-viewc":"search-view"}}'>
+            <view id='{{activeCategoryId}}' class="{{activeCategoryId==0?'change':'search_cl'}}" bindtap='searchEnd'>
+                <text>分类</text>
+                <image src='https://img.sahuanka.com/sjCard/images/3.png' style="width:18rpx;height:10rpx;margin-left:20rpx"></image>
+            </view>
+            <!-- <image src='/images/3.png' style="width:18rpx;height:10rpx"></image> -->
+            <view class='{{activeCategoryId==0?"search-contentc":"search-content"}}'>
+                <image src="https://img.sahuanka.com/sjCard/images/2.png" class="search-icon" />
+                <input placeholder="请输入搜索内容" placeholder-class="search_pl" class="search-input" maxlength="30" confirm-type="搜索" value='{{searchInput}}' bindconfirm='toSearch'></input>
+            </view>
+        </view>
+        <view hidden='{{show}}'>
+            <view class='search_aCon' wx:for='{{categories}}' wx:key="productMenuId" wx:for-item='items' id="{{items.productMenuId}}" style='display:{{activeCategoryId == items.productMenuId&&show==false ? "block":"none"}}'>
+                <view class="search_alert" id="{{item.productMenuId}}" bindtap='searchEnd' wx:for="{{items.subList}}" wx:key="productMenuId">
+                    {{item.name}}
+                </view>
+            </view>
+        </view>
     </view>
     <!-- 商品详情 -->
     <view class="goods-container">
         <view class="goods-box" wx:for-items="{{goods}}" wx:key="{{index}}" bindtap="toDetailsTap" data-id="{{item.businessactivityid}}" data-bid="{{item.businessid}}" data-activitytype="{{item.activitytype}}">
-           <view class="img-box">
-              <image src="{{item.activitypic}}" class="image" mode="aspectFill" lazy-load="true"/>
-              <view class="imgbox_info" style='font-size: 20rpx;color: #9F8A60;'>{{item.description}}</view>
-           </view>
-           <view class="goods-title">{{item.activityname}}</view>
-           <view style='display:flex;'>
-            <view class="goods-price"> Š {{item.amount}} </view>
-           </view>           
+            <view class="img-box">
+                <image src="{{item.activitypic}}" class="image" mode="aspectFill" lazy-load="true" />
+                <view class="imgbox_info" style='font-size: 20rpx;color: #9F8A60;'>
+                    {{item.description}}
+                </view>
+            </view>
+            <view class="goods-title">{{item.activityname}}</view>
+            <view style='display:flex;'>
+                <view class="goods-price">Š {{item.amount}}</view>
+            </view>
         </view>
     </view>
-    <view  class="no-more-goods">没有更多啦</view>
+    <view class="no-more-goods">没有更多啦</view>
 </view>

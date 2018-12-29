@@ -14,12 +14,12 @@ Page({
    */
 
   data: {
-    addrShow:true,
-    addressList:[],//地址
+    addrShow: true,
+    addressList: [], //地址
     createDate: "",
-    info: [],//最新评价信息
-    count: 0,//用户评价总数
-    goodsNumber: 0,//售出多少件
+    info: [], //最新评价信息
+    count: 0, //用户评价总数
+    goodsNumber: 0, //售出多少件
 
     buyNumber: 1,
 
@@ -33,14 +33,14 @@ Page({
 
     course_time: "10月8号",
 
-    showPhoneModal: false,//手机号绑定弹框
+    showPhoneModal: false, //手机号绑定弹框
 
-    businessactivityid: '',//课程详情
-    activitytype:0,
+    businessactivityid: '', //课程详情
+    activitytype: 0,
 
-    businessInfo: {},//商家信息
+    businessInfo: {}, //商家信息
 
-    activityInfo: {},//活动信息
+    activityInfo: {}, //活动信息
 
     inviteUserPhone: '',
 
@@ -48,13 +48,25 @@ Page({
 
     ifShow: true,
 
-    starImg:[],
-    commentShow:true,
-    addressLength:0,
+    starImg: [],
+    commentShow: true,
+    addressLength: 0,
 
-    shopType: "addShopCar",//购物类型，加入购物车或立即购买，默认为加入购物车
+    shopType: "addShopCar", //购物类型，加入购物车或立即购买，默认为加入购物车
 
-    Type: [{ title: "规格", years: [{ year: "三个月", acount: 10 }, { year: "半年", acount: 20 }, { year: "一年", acount: 0 }] }],
+    Type: [{
+      title: "规格",
+      years: [{
+        year: "三个月",
+        acount: 10
+      }, {
+        year: "半年",
+        acount: 20
+      }, {
+        year: "一年",
+        acount: 0
+      }]
+    }],
 
     chooseyear: ""
 
@@ -74,40 +86,27 @@ Page({
     var courseDetailId
 
     if (options.businessactivityid) {
-
       courseDetailId = options.businessactivityid;
-
       //console.log('222');
-
     }
 
     //来自分享的参数
 
     if (options.shareparam) {
-
-      console.log('888');
-
       var info = JSON.parse(options.shareparam);
-
       courseDetailId = info.businessactivityid;
-
       var inviteUserPhone = info.level;
       var activitytype = info.activitytype
-
       getApp().globalData.invitePeopleNumber = inviteUserPhone;
-
-      console.log(getApp().globalData.invitePeopleNumber);
-
     }
 
-    this.setData({ 'businessactivityid': courseDetailId, 'activitytype': activitytype });
-
+    this.setData({
+      'businessactivityid': courseDetailId,
+      'activitytype': activitytype || options.activitytype
+    });
     this.initPageDetail(courseDetailId);
 
-
-
     //已售多少件
-
     var that = this;
     wx.getStorage({
       key: 'loginStutes',
@@ -115,33 +114,27 @@ Page({
         console.log(res);
         var userInfo = JSON.parse(res.data);
         var tokenVal = userInfo.app_token;
-    wx.request({
-
-      url: getApp().apiUrl + '/api/order/number/' + options.businessactivityid,
-
-      method: "get",
-
-      data: { businessactivityid: options.businessactivityid },
-      header: {
-        'Authorization': tokenVal
-      },
-      success(res) {
-    
-        that.setData({
-
-          goodsNumber: res.data.number
-
+        wx.request({
+          url: getApp().apiUrl + '/api/order/number/' + options.businessactivityid,
+          method: "get",
+          data: {
+            businessactivityid: options.businessactivityid
+          },
+          header: {
+            'Authorization': tokenVal
+          },
+          success(res) {
+            that.setData({
+              goodsNumber: res.data.number
+            })
+          }
         })
-
-      }
-
-    })
 
         //店铺地址
         wx.request({
           url: getApp().apiUrl + '/api/business/address/list/' + options.businessid,
           success(res) {
-            console.log(res.data.list.length);
+            // console.log(res.data.list.length);
             if (res.data.code == 0 && res.data.list.length != 0) {
               that.setData({
                 addressList: res.data.list,
@@ -157,31 +150,24 @@ Page({
         })
 
         wx.request({
-
           url: getApp().apiUrl + '/api/comment/total/' + that.data.businessactivityid,
           data: ({
             businessActivityId: that.data.businessactivityid
           }),
-
           method: 'get',
           header: {
             'Authorization': tokenVal,
             'content-type': 'application/x-www-form-urlencoded'
           },
           success(res) {
-
             console.log(res.data.info.count)
             if (res.data.code == 0 && res.data.info.count != 0) {
-
               that.setData({
-
                 count: res.data.info.count,
                 commentShow: false
-
               })
             }
           }
-
         })
 
         //用户评价
@@ -189,7 +175,6 @@ Page({
           url: getApp().apiUrl + '/api/comment/latest/' + that.data.businessactivityid,
           data: ({
             businessActivityId: that.data.businessactivityid
-
           }),
           header: {
             'Authorization': tokenVal,
@@ -198,22 +183,17 @@ Page({
           method: 'get',
           success(res) {
             if (res.data.code == 0 && res.data.info != null) {
-
               var createdate = res.data.info.createTime;
               var createMonth = createdate.substring(5, 7);
               var createDay = createdate.substring(8, 10);
-
               var starArr = [];
               for (var i = 0; i < res.data.info.score; i++) {
                 starArr.push("http://img.sahuanka.com/sjCard/images/star.png")
               };
               that.setData({
-
                 info: res.data.info,
-
                 createDate: createMonth + "月" + createDay + "日",
                 starImg: starArr
-
               })
             } else {
               that.setData({
@@ -223,8 +203,8 @@ Page({
           }
 
         })
-  }
-})
+      }
+    })
 
   },
 
@@ -316,48 +296,31 @@ Page({
  */
 
   onShareAppMessage: function (res) {
-
     var head = this.data.activityInfo.activityname;
-
     var businessactivityid = this.data.businessactivityid;
-
     var imgUrl = this.data.businessInfo.businesspic;
-
     if (imgUrl) {
-
       imgUrl = this.data.businessInfo.businesspic
-
     } else {
-
       imgUrl = '/images/home_banner.png'
-
     }
-
     //var userInfo = getApp().globalData.userInfo
-
     if (res.from === 'button') {
-
       // 来自页面内转发按钮
-
       console.log(res.target)
-
     }
-
     var inviteUserPhone = this.data.inviteUserPhone;
-    var activitytype=this.data.activitytype
-
-    console.log('000' + inviteUserPhone);
-
-    var shareparam = JSON.stringify({ level: inviteUserPhone, businessactivityid: businessactivityid,activitytype:activitytype })
-
+    var activitytype = this.data.activitytype
+    // console.log('000' + inviteUserPhone);
+    var shareparam = JSON.stringify({
+      level: inviteUserPhone,
+      businessactivityid: businessactivityid,
+      activitytype: activitytype
+    })
     return {
-
       title: head,
-
       path: "/pages/courseDetail/courseDetail?shareparam=" + shareparam,
-
       imageUrl: imgUrl
-
     }
 
   },
@@ -365,21 +328,13 @@ Page({
   //点击确定-bindPhone组件传过来的信息
 
   getBindInfo: function (e) {
-
-    console.log(e);
-
-    var bindInfo = e.detail.bindPhone;//true为手机绑定成功，false为手机绑定失败
-
+    var bindInfo = e.detail.bindPhone; //true为手机绑定成功，false为手机绑定失败
     if (bindInfo) {
-
       var userInfo = e.detail.userInfo;
-
-      console.log(userInfo);
-
-      this.setData({ 'showPhoneModal': false });//绑定手机号成功后影藏弹框
-
+      this.setData({
+        'showPhoneModal': false
+      }); //绑定手机号成功后影藏弹框
     }
-
   },
 
   initPageDetail: function (courseId) {
@@ -396,7 +351,9 @@ Page({
 
         var userInfo = JSON.parse(res.data);
 
-        that.setData({ inviteUserPhone: userInfo.mobile });
+        that.setData({
+          inviteUserPhone: userInfo.mobile
+        });
 
       },
 
@@ -406,7 +363,9 @@ Page({
 
       method: 'post',
 
-      header: { 'content-type': 'application/x-www-form-urlencoded' },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
 
       success: function (res) {
 
@@ -414,13 +373,16 @@ Page({
 
         if (res.data.code == 0) {
 
-          var hostInfo = res.data.business;//商家信息
+          var hostInfo = res.data.business; //商家信息
 
-          var activityInfo = res.data.businessactivity;//商家活动
+          var activityInfo = res.data.businessactivity; //商家活动
 
           //console.log(activityInfo);
 
-          that.setData({ 'businessInfo': hostInfo, 'activityInfo': activityInfo });
+          that.setData({
+            'businessInfo': hostInfo,
+            'activityInfo': activityInfo
+          });
 
           //富文本
 
@@ -458,9 +420,9 @@ Page({
     var activitytype = that.data.activitytype;
     var ordertype
     if (activitytype == 2) {
-      ordertype =7
-    }else{
-      ordertype =6
+      ordertype = 7
+    } else {
+      ordertype = 6
     }
     console.log(ordertype);
     wx.getStorage({
@@ -482,9 +444,15 @@ Page({
 
           method: 'post',
 
-          data: { 'ordertype': ordertype, 'businessactivityid': businessactivityid },
+          data: {
+            'ordertype': ordertype,
+            'businessactivityid': businessactivityid
+          },
 
-          header: { 'content-type': 'application/x-www-form-urlencoded', 'Authorization': tokenVal },
+          header: {
+            'content-type': 'application/x-www-form-urlencoded',
+            'Authorization': tokenVal
+          },
 
           success: function (res) {
 
@@ -496,9 +464,13 @@ Page({
 
               var orderInfo = res.data.order;
 
-              if (orderInfo.orderpic) { orderInfo.orderpic = encodeURIComponent(orderInfo.orderpic); }
+              if (orderInfo.orderpic) {
+                orderInfo.orderpic = encodeURIComponent(orderInfo.orderpic);
+              }
 
-              if (orderInfo.qrcode) { orderInfo.qrcode = encodeURIComponent(orderInfo.qrcode); }
+              if (orderInfo.qrcode) {
+                orderInfo.qrcode = encodeURIComponent(orderInfo.qrcode);
+              }
 
               console.log(orderInfo);
 
@@ -508,7 +480,7 @@ Page({
 
                 url: '/pages/myorder/myorder?orderInfo=' + orderInfo
 
-              })//领取成功跳转到-确认订单页面
+              }) //领取成功跳转到-确认订单页面
 
             } else {
 
@@ -534,7 +506,9 @@ Page({
 
       fail: function (res) {
 
-        that.setData({ 'showPhoneModal': true });
+        that.setData({
+          'showPhoneModal': true
+        });
 
       }
 
@@ -589,9 +563,14 @@ Page({
 
             method: 'POST',
 
-            data: { 'businessid': storeId },
+            data: {
+              'businessid': storeId
+            },
 
-            header: { 'content-type': 'text/html;charset=UTF-8', 'Authorization': tokenval },
+            header: {
+              'content-type': 'text/html;charset=UTF-8',
+              'Authorization': tokenval
+            },
 
             success: function (res) {
 
@@ -637,9 +616,14 @@ Page({
 
             method: 'POST',
 
-            data: { 'businessid': storeId },
+            data: {
+              'businessid': storeId
+            },
 
-            header: { 'content-type': 'application/x-www-form-urlencoded', 'Authorization': tokenval },
+            header: {
+              'content-type': 'application/x-www-form-urlencoded',
+              'Authorization': tokenval
+            },
 
             success: function (res) {
 
@@ -683,7 +667,9 @@ Page({
 
       fail: function (res) {
 
-        that.setData({ 'showPhoneModal': true });
+        that.setData({
+          'showPhoneModal': true
+        });
 
       }
 
@@ -833,7 +819,7 @@ Page({
     }
 
   },
-  
+
   //收藏
   save: function (e) {
     console.log(e);
@@ -852,8 +838,13 @@ Page({
           wx.request({
             url: getApp().apiUrl + '/api/attention/delete',
             method: 'POST',
-            data: { 'businessid': storeId },
-            header: { 'content-type': 'text/html;charset=UTF-8', 'Authorization': tokenval },
+            data: {
+              'businessid': storeId
+            },
+            header: {
+              'content-type': 'text/html;charset=UTF-8',
+              'Authorization': tokenval
+            },
             success: function (res) {
               console.log(res);
               if (res.data.code == 0) {
@@ -876,8 +867,13 @@ Page({
           wx.request({
             url: getApp().apiUrl + '/api/attention/save',
             method: 'POST',
-            data: { 'businessid': storeId },
-            header: { 'content-type': 'application/x-www-form-urlencoded', 'Authorization': tokenval },
+            data: {
+              'businessid': storeId
+            },
+            header: {
+              'content-type': 'application/x-www-form-urlencoded',
+              'Authorization': tokenval
+            },
             success: function (res) {
               console.log(res);
               if (res.data.code == 0) {
@@ -899,25 +895,27 @@ Page({
         }
       },
       fail: function (res) {
-        that.setData({ 'showPhoneModal': true });
+        that.setData({
+          'showPhoneModal': true
+        });
       }
     });
   },
-  goShop(){
+  goShop() {
     var bussinessId = this.data.businessInfo.businessid
     wx.navigateTo({
       url: '/pages/lessonList/lessonList?businessId=' + bussinessId,
     })
   },
   commentAll() {
-    var that = this;
+    var that = this
     wx.navigateTo({
       url: '/pages/commentAll/commentAll?businessActivityId=' + that.data.businessactivityid,
     })
     console.log(that.data.businessactivityid)
   },
   //确认订单
-   skip_sureOrders: function () {
+  skip_sureOrders: function () {
     //创建支付订单
     var that = this;
     var businessactivityid = that.data.businessactivityid;
@@ -931,20 +929,30 @@ Page({
         wx.request({
           url: getApp().apiUrl + '/api/order/creatOrder',
           method: 'post',
-          data: { 'ordertype': 6, 'businessactivityid': businessactivityid },
-          header: { 'content-type': 'application/x-www-form-urlencoded', 'Authorization': tokenVal },
+          data: {
+            'ordertype': 6,
+            'businessactivityid': businessactivityid
+          },
+          header: {
+            'content-type': 'application/x-www-form-urlencoded',
+            'Authorization': tokenVal
+          },
           success: function (res) {
             console.log(res);
             if (res.data.code == 0) {
               var activityInfo = that.data.activityInfo;
               var orderInfo = res.data.order;
-              if (orderInfo.orderpic) { orderInfo.orderpic = encodeURIComponent(orderInfo.orderpic); }
-              if (orderInfo.qrcode) { orderInfo.qrcode = encodeURIComponent(orderInfo.qrcode); }
+              if (orderInfo.orderpic) {
+                orderInfo.orderpic = encodeURIComponent(orderInfo.orderpic);
+              }
+              if (orderInfo.qrcode) {
+                orderInfo.qrcode = encodeURIComponent(orderInfo.qrcode);
+              }
               console.log(orderInfo);
               orderInfo = JSON.stringify(res.data.order);
               wx.navigateTo({
                 url: '/pages/myorder/myorder?orderInfo=' + orderInfo
-              })//领取成功跳转到-确认订单页面
+              }) //领取成功跳转到-确认订单页面
             } else {
               wx.showToast({
                 title: res.data.msg,
@@ -957,13 +965,15 @@ Page({
         })
       },
       fail: function (res) {
-        that.setData({ 'showPhoneModal': true });
+        that.setData({
+          'showPhoneModal': true
+        });
       }
     })
   },
-  changIndex(){
+  changIndex() {
     wx.switchTab({
       url: "/pages/index/index"
-    })  
+    })
   }
 })

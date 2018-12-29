@@ -70,7 +70,7 @@ Page({
       })
   },
   onPageScroll(e) {
-    console.log(e);
+    // console.log(e);
     let scrollTop = this.data.scrollTop
     this.setData({
       scrollTop: e.scrollTop

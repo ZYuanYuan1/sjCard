@@ -8,21 +8,21 @@ Page({
    */
   data: {
     addrShow: true,
-    commentShow:true,
-    showPhoneModal: false,//手机号绑定弹框
-    showModal: false,//会员等级低弹框
-    showModalTake: false,//正常领取任务弹框
-    showModalCredit: false,//信用分偏低弹框
-    businessInfo: {},//商家信息
-    activityInfo: {},//活动信息
-    businessactivityid: '',//商家活动id
-    saving: 0,//0是未收藏，1是收藏
+    commentShow: true,
+    showPhoneModal: false, //手机号绑定弹框
+    showModal: false, //会员等级低弹框
+    showModalTake: false, //正常领取任务弹框
+    showModalCredit: false, //信用分偏低弹框
+    businessInfo: {}, //商家信息
+    activityInfo: {}, //活动信息
+    businessactivityid: '', //商家活动id
+    saving: 0, //0是未收藏，1是收藏
     inviteUserPhone: ' ',
-    info:[],
-    createDate:"",
-    addressList:[],
-    addressLength:0,
-    count:0
+    info: [],
+    createDate: "",
+    addressList: [],
+    addressLength: 0,
+    count: 0
   },
 
   /**
@@ -46,7 +46,9 @@ Page({
       getApp().globalData.invitePeopleNumber = inviteUserPhone;
       console.log(getApp().globalData.invitePeopleNumber);
     }
-    this.setData({'businessactivityid': businessactivityid });
+    this.setData({
+      'businessactivityid': businessactivityid
+    });
 
     //加载积分详情
     this.scoreDetail(businessactivityid);
@@ -64,7 +66,9 @@ Page({
 
           method: "get",
 
-          data: { businessactivityid: options.businessactivityid },
+          data: {
+            businessactivityid: options.businessactivityid
+          },
           header: {
             'Authorization': tokenVal
           },
@@ -83,48 +87,48 @@ Page({
 
 
         wx.request({
-      url: getApp().apiUrl + '/api/comment/latest/' + that.data.businessactivityid,
-      data: ({
-   businessActivityId:that.data.businessactivityid
+          url: getApp().apiUrl + '/api/comment/latest/' + that.data.businessactivityid,
+          data: ({
+            businessActivityId: that.data.businessactivityid
 
-      }),
-      header: {
-        'Authorization': tokenVal,
-        'content-type': 'application/x-www-form-urlencoded'
-      },
-      method: 'get',
-      success(res) {
-        console.log(res.data.info);
-       if (res.data.code == 0 && res.data.info != null) {
+          }),
+          header: {
+            'Authorization': tokenVal,
+            'content-type': 'application/x-www-form-urlencoded'
+          },
+          method: 'get',
+          success(res) {
+            console.log(res.data.info);
+            if (res.data.code == 0 && res.data.info != null) {
 
-        var createdate = res.data.info.createTime;
-        var createMonth = createdate.substring(5, 7);
-        var createDay = createdate.substring(8, 10);
+              var createdate = res.data.info.createTime;
+              var createMonth = createdate.substring(5, 7);
+              var createDay = createdate.substring(8, 10);
 
-        var starArr = [];
-        for (var i = 0; i < res.data.info.score; i++) {
-          starArr.push("http://img.sahuanka.com/sjCard/images/star.png")
-        };
-        that.setData({
+              var starArr = [];
+              for (var i = 0; i < res.data.info.score; i++) {
+                starArr.push("http://img.sahuanka.com/sjCard/images/star.png")
+              };
+              that.setData({
 
-          info: res.data.info,
+                info: res.data.info,
 
-          createDate: createMonth + "月" + createDay + "日",
-          starImg:starArr
+                createDate: createMonth + "月" + createDay + "日",
+                starImg: starArr
+
+              })
+            } else {
+              that.setData({
+                count: 0
+              })
+            }
+          }
 
         })
-      }else{
-        that.setData({
-          count:0
-        })
-      }
-      }
-
-    })
         wx.request({
           url: getApp().apiUrl + '/api/business/address/list/' + options.businessid,
           success(res) {
-            console.log(res.data.list.length);
+            // console.log(res.data.list.length);
             if (res.data.code == 0 && res.data.list.length != 0) {
               that.setData({
                 addressList: res.data.list,
@@ -139,38 +143,38 @@ Page({
           }
         })
 
-    //用户评价总数量
+        //用户评价总数量
 
-    wx.request({
+        wx.request({
 
-      url: getApp().apiUrl + '/api/comment/total/' + that.data.businessactivityid,
-      data: ({
-        businessActivityId:that.data.businessactivityid
-      }),
+          url: getApp().apiUrl + '/api/comment/total/' + that.data.businessactivityid,
+          data: ({
+            businessActivityId: that.data.businessactivityid
+          }),
 
-      method: 'get',
-      header: {
-        'Authorization': tokenVal,
-        'content-type': 'application/x-www-form-urlencoded'
-      },
-      success(res) {
+          method: 'get',
+          header: {
+            'Authorization': tokenVal,
+            'content-type': 'application/x-www-form-urlencoded'
+          },
+          success(res) {
 
-        console.log(res.data.info.count)
-        if (res.data.code == 0 && res.data.info.count!=0){
+            console.log(res.data.info.count)
+            if (res.data.code == 0 && res.data.info.count != 0) {
 
-        that.setData({
+              that.setData({
 
-          count: res.data.info.count,
-          commentShow: false
+                count: res.data.info.count,
+                commentShow: false
+
+              })
+            }
+          }
 
         })
-        }
       }
-
     })
-  }
-})
- //店铺地址
+    //店铺地址
   },
 
   /**
@@ -230,7 +234,10 @@ Page({
     }
     var inviteUserPhone = this.data.inviteUserPhone;
     console.log('000' + inviteUserPhone);
-    var shareparam = JSON.stringify({ level: inviteUserPhone, businessactivityid: businessactivityid })
+    var shareparam = JSON.stringify({
+      level: inviteUserPhone,
+      businessactivityid: businessactivityid
+    })
     return {
       title: head,
       path: "/pages/scoreDetail/scoreDetail?shareparam=" + shareparam,
@@ -245,25 +252,34 @@ Page({
       key: 'loginStutes',
       success: function (res) {
         var userInfo = JSON.parse(res.data);
-        that.setData({ inviteUserPhone: userInfo.mobile });
+        that.setData({
+          inviteUserPhone: userInfo.mobile
+        });
         //console.log(userInfo);
         var tokenVal = userInfo.app_token;
         wx.request({
           // + detailId
           url: getApp().apiUrl + '/api/businessactivity/info/' + detailId,
           method: 'post',
-          header: { 'content-type': 'application/x-www-form-urlencoded', 'Authorization': tokenVal },
+          header: {
+            'content-type': 'application/x-www-form-urlencoded',
+            'Authorization': tokenVal
+          },
           success: function (res) {
             console.log(res);
             if (res.data.code == 0) {
-              var hostInfo = res.data.business;//商家信息
-              var activityInfo = res.data.businessactivity;//商家活动
+              var hostInfo = res.data.business; //商家信息
+              var activityInfo = res.data.businessactivity; //商家活动
               var saving = res.data.isAttention;
               if (activityInfo.shelftime != null && activityInfo.endtime != null) {
                 activityInfo.shelftime = activityInfo.shelftime.substring(0, 16);
                 activityInfo.endtime = activityInfo.endtime.substring(0, 16);
               }
-              that.setData({ 'businessInfo': hostInfo, 'activityInfo': activityInfo, 'saving': saving });
+              that.setData({
+                'businessInfo': hostInfo,
+                'activityInfo': activityInfo,
+                'saving': saving
+              });
               //富文本
               var article = activityInfo.content;
               WxParse.wxParse('article', 'html', article, that, 15);
@@ -278,15 +294,22 @@ Page({
         wx.request({
           url: getApp().apiUrl + '/api/businessactivity/info/' + detailId,
           method: 'post',
-          header: { 'content-type': 'application/x-www-form-urlencoded', 'Authorization': "" },
+          header: {
+            'content-type': 'application/x-www-form-urlencoded',
+            'Authorization': ""
+          },
           success: function (res) {
             console.log(res);
             if (res.data.code == 0) {
-              var hostInfo = res.data.business;//商家信息
-              var activityInfo = res.data.businessactivity;//商家活动
+              var hostInfo = res.data.business; //商家信息
+              var activityInfo = res.data.businessactivity; //商家活动
               var saving = res.data.isAttention;
               console.log(activityInfo);
-              that.setData({ 'businessInfo': hostInfo, 'activityInfo': activityInfo, 'saving': saving });
+              that.setData({
+                'businessInfo': hostInfo,
+                'activityInfo': activityInfo,
+                'saving': saving
+              });
               //富文本
               var article = activityInfo.content;
               //article.replace(/\<img/gi, '<img style="max-width:100%;height:auto;width:100px;"')
@@ -318,8 +341,13 @@ Page({
           wx.request({
             url: getApp().apiUrl + '/api/attention/delete',
             method: 'POST',
-            data: { 'businessid': storeId },
-            header: { 'content-type': 'text/html;charset=UTF-8', 'Authorization': tokenval },
+            data: {
+              'businessid': storeId
+            },
+            header: {
+              'content-type': 'text/html;charset=UTF-8',
+              'Authorization': tokenval
+            },
             success: function (res) {
               console.log(res);
               if (res.data.code == 0) {
@@ -342,8 +370,13 @@ Page({
           wx.request({
             url: getApp().apiUrl + '/api/attention/save',
             method: 'POST',
-            data: { 'businessid': storeId },
-            header: { 'content-type': 'application/x-www-form-urlencoded', 'Authorization': tokenval },
+            data: {
+              'businessid': storeId
+            },
+            header: {
+              'content-type': 'application/x-www-form-urlencoded',
+              'Authorization': tokenval
+            },
             success: function (res) {
               console.log(res);
               if (res.data.code == 0) {
@@ -365,18 +398,22 @@ Page({
         }
       },
       fail: function (res) {
-        that.setData({ 'showPhoneModal': true });
+        that.setData({
+          'showPhoneModal': true
+        });
       }
     });
   },
   //点击确定-bindPhone组件传过来的信息
   getBindInfo: function (e) {
     console.log(e);
-    var bindInfo = e.detail.bindPhone;//true为手机绑定成功，false为手机绑定失败
+    var bindInfo = e.detail.bindPhone; //true为手机绑定成功，false为手机绑定失败
     if (bindInfo) {
       var userInfo = e.detail.userInfo;
       console.log(userInfo);
-      this.setData({ 'showPhoneModal': false });//绑定手机号成功后影藏弹框
+      this.setData({
+        'showPhoneModal': false
+      }); //绑定手机号成功后影藏弹框
     }
   },
   //跳转到商家课程列表
@@ -387,8 +424,7 @@ Page({
       url: '/pages/lessonList/lessonList?businessId=' + bussinessId,
     })
   },
-  preventTouchMove: function () {
-  },
+  preventTouchMove: function () {},
   //点击领取任务按钮-出现弹框
   showDialogBtn: function () {
     var that = this;
@@ -404,26 +440,29 @@ Page({
           url: getApp().apiUrl + '/api/user/info',
           method: 'post',
           data: {},
-          header: { 'content-type': 'application/x-www-form-urlencoded', 'Authorization': tokenVal },
+          header: {
+            'content-type': 'application/x-www-form-urlencoded',
+            'Authorization': tokenVal
+          },
           success: function (res) {
             console.log(res);
             if (res.data.code == 0) {
               //先判断信用等级和信用分
-              var grade = res.data.user.grade;//会员等级
-              var currGrade = that.data.activityInfo.amount;//当前任务积分
+              var grade = res.data.user.grade; //会员等级
+              var currGrade = that.data.activityInfo.amount; //当前任务积分
               //待测试
-              if (currGrade >39 &&grade<=0) {
+              if (currGrade > 39 && grade <= 0) {
                 that.setData({
                   showModalCredit: true
                 })
                 return false
-              }//信用分小于等于3时的弹框
-              if (grade < currGrade && grade>0) {
+              } //信用分小于等于3时的弹框
+              if (grade < currGrade && grade > 0) {
                 that.setData({
                   showModal: true
                 })
                 return false
-              }//会员等级小于当前任务积分时的弹框        
+              } //会员等级小于当前任务积分时的弹框        
               that.setData({
                 showModalTake: true
               })
@@ -440,7 +479,9 @@ Page({
 
       },
       fail: function (res) {
-        that.setData({ 'showPhoneModal': true });
+        that.setData({
+          'showPhoneModal': true
+        });
       }
     })
   },
@@ -479,8 +520,14 @@ Page({
         wx.request({
           url: getApp().apiUrl + '/api/order/creatOrder',
           method: 'post',
-          data: { 'ordertype': 1, 'businessactivityid': businessactivityid },
-          header: { 'content-type': 'application/x-www-form-urlencoded', 'Authorization': tokenVal },
+          data: {
+            'ordertype': 1,
+            'businessactivityid': businessactivityid
+          },
+          header: {
+            'content-type': 'application/x-www-form-urlencoded',
+            'Authorization': tokenVal
+          },
           success: function (res) {
             console.log(res);
             if (res.data.code == 0) {
@@ -494,7 +541,7 @@ Page({
                   setTimeout(function () {
                     wx.navigateTo({
                       url: '/pages/myTask/myTask',
-                    })//领取成功跳转到-我的任务页面
+                    }) //领取成功跳转到-我的任务页面
                   }, 200)
                 }
               })
@@ -510,7 +557,9 @@ Page({
         })
       },
       fail: function (res) {
-        that.setData({ 'showPhoneModal': true });
+        that.setData({
+          'showPhoneModal': true
+        });
       }
     })
     // this.setData({
@@ -538,7 +587,9 @@ Page({
     var _errImg = e.target.dataset.errImg;
     var businessInfo = this.data.businessInfo
     this.data.businessInfo.businesspic = "/images/defaultImg.png"
-    this.setData({ businessInfo: businessInfo })
+    this.setData({
+      businessInfo: businessInfo
+    })
   },
   commentAll() {
     wx.navigateTo({

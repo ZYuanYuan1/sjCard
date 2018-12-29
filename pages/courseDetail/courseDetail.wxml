@@ -50,7 +50,7 @@
       <view class='model' hidden='{{addrShow}}'>
               <view class="taskheadtext taskheadtextThree" style='font-size:26rpx;color:#999999'>适用店铺({{addressLength}})</view>
            <view class='taskitem'>
-               <view class='address' wx:for="{{addressList}}">
+               <view class='address' wx:for="{{addressList}}" wx:key="businessAddrId">
                   <image src='/images/position.png' class='addressImg'></image>
                   <view>{{item.province}}{{item.city}}{{item.district}}{{item.address}}</view>
               </view>
@@ -63,7 +63,7 @@
                   <view class='dissLeft'>用户评价({{count}})</view>
                   <view style='font-size:24rpx;color:#F5A623;align-items:center;' bindtap='commentAll'>
                      <text>查看全部</text>
-                     <image style='width:22rpx;height:22rpx;margin-left:8rpx' src='/images/arrow.png'></image>
+                     <!-- <image style='width:22rpx;height:22rpx;margin-left:8rpx' src='/images/arrow.png'></image> -->
                   </view>
               </view>
                <view class="taskitem" style='display:flex'>
@@ -71,9 +71,9 @@
                    <view style='display:flex:0 0 72%;line-height:20rpx;line-height:22px;width:68%;'>
                         <view style='font-size:26rpx;color:#446889'>{{info.userName==null&&avatarUrl==null?'*****':info.userName}}</view>
                         <view style='font-size:20rpx'><text>打分 </text>
-                        <image wx:for="{{starImg}}"src='{{item}}' class='star' style="margin-right:4rpx"></image></view>
+                        <image wx:for="{{starImg}}" wx:key="index" src='{{item}}' class='star' style="margin-right:4rpx"></image></view>
                         <view style='font-size:28rpx'>{{info.content}}</view>
-                        <view style='margin-top:22rpx'><image wx:for="{{info.imgList}}" class='dissCenterimg' src='{{item}}'></image>
+                        <view style='margin-top:22rpx'><image wx:for="{{info.imgList}}" wx:key="index" class='dissCenterimg' src='{{item}}'></image>
                         </view>
                    </view>
                    <view style='font-size:24rpx;color:#999999;flex:0 0 16%'>{{createDate}}</view>
