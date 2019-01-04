@@ -1,4 +1,8 @@
 {
   "navigationBarTitleText": "邀请有奖",
-  "enablePullDownRefresh": false
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "painter": "../../components/painter/painter"
+  },
+  "disableScroll": true
 }

@@ -14,10 +14,10 @@ App({
     //console.log(logs);
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs);
-    console.log(options);
+    // console.log(options);
     this.globalData.scene = options.scene;
     this.getUserInfo(function(info){
-      console.log(info);
+      // console.log(info);
     });
     // this.locationFun();
     
@@ -32,7 +32,7 @@ App({
       //调用登录接口
       wx.login({
         success: function (res) {
-          console.log(res);
+          // console.log(res);
           var js_code=res.code;
           wx.request({
             url: that.apiUrl + '/api/weixin/login',
@@ -40,7 +40,7 @@ App({
             data:{ 'appletCode': js_code},
             header: { 'content-type': 'application/x-www-form-urlencoded'},
             success: function (res) {
-              console.log(res);
+              // console.log(res);
               if(res.data.code==0){
                 //如果用户不为空
                 if(res.data.user){
@@ -125,9 +125,10 @@ App({
   // apiUrl: "http://116.62.61.1/"z
   //apiUrl: "https://cs1.wdtzt.com"
   // apiUrl: "https://admin.wdtzt.com"
-   apiUrl: "https://api.qinzirongyao.com" 
   //apiUrl: "http://192.168.50.111:8080"
     // apiUrl:"http://192.168.0.199:8081"
   // apiUrl:"http://192.168.0.199:8081"
   //  apiUrl: "https://api.jcrsjy.com"
+  // apiUrl: "https://api.qinzirongyao.com" //正式
+  apiUrl: "https://test.jcrsjy.com" //测试
 })
