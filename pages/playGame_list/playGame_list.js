@@ -10,6 +10,7 @@ Page({
     userInfo: {},
     categories: [],
     activeCategoryId: 0,
+    activeClassId: 0,
     goods: [],
     scrollTop: 0,
     loadingMoreHidden: true,
@@ -157,8 +158,13 @@ Page({
   },
   searchEnd(e){
     console.log(e)
+    let activeClassId = e.currentTarget.id
+    if (e.currentTarget.dataset.c == true) {
+      activeClassId = this.data.activeClassId
+    }
     this.setData({
-      show: !this.data.show
+      show: !this.data.show,
+      activeClassId
     })
     this.getGoodsList(e.currentTarget.id);
   }
