@@ -100,10 +100,7 @@ Page({
           inviteUserPhone: userInfo.mobile,
           nickName: userInfo.username
         });
-
         that.innitQRcode(tokenVal)
-
-        //that.setData({ 'userInfo': userInfo });
         wx.request({
           url: getApp().apiUrl + '/api/user/list',
           method: 'post',
@@ -134,9 +131,7 @@ Page({
                 'homeList': homeList
               });
             };
-
           },
-
         })
       },
       fail: function (res) {
@@ -234,16 +229,27 @@ Page({
       title: '生成分享海报中',
       mask: true
     })
-    base64src(this.data.img).then(res => {
-      let qrcode = res
-      wx.getImageInfo({
-        src: 'https://img.sahuanka.com/sjCard/images/poster_bg2.jpg',
-        success: function (res) {
-          that.setData({
-            showModal: true,
-            template: that.palette(res.path, qrcode, that.data.nickName)
-          })
+
+    const imgPromise = new Promise((resolve, reject) => {
+      setTimeout(function timer() {
+        if (that.data.img) {
+          resolve()
         }
+      }, 500)
+    })
+
+    imgPromise.then(() => {
+      base64src(this.data.img).then(res => {
+        let qrcode = res
+        wx.getImageInfo({
+          src: 'https://img.sahuanka.com/sjCard/images/poster_bg2.jpg',
+          success: function (res) {
+            that.setData({
+              showModal: true,
+              template: that.palette(res.path, qrcode, that.data.nickName)
+            })
+          }
+        })
       })
     })
   },
@@ -254,8 +260,7 @@ Page({
       width: '558rpx',
       height: '992rpx',
       background: bg,
-      views: [
-        {
+      views: [{
           type: 'image',
           url: qr_code,
           css: {
