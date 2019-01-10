@@ -107,11 +107,11 @@
             </view>
         </view>
       </block>
-      <view wx:if="{{reachBottomTip==true}}" class="reachbottom">到底啦</view>
+      <view wx:if="{{reachBottomTip==true}}" class="reachbottom bottom">没有更多啦</view>
     </view>
-    <view class="nodata" >
+    <!-- <view class="nodata" >
       暂无数据
-    </view> 
+    </view>  -->
   </view>
   </view>
 </view>

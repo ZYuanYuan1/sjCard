@@ -129,6 +129,6 @@ App({
     // apiUrl:"http://192.168.0.199:8081"
   // apiUrl:"http://192.168.0.199:8081"
   //  apiUrl: "https://api.jcrsjy.com"
-  // apiUrl: "https://api.qinzirongyao.com" //正式
-  apiUrl: "https://test.jcrsjy.com" //测试
+  apiUrl: "https://api.sahuanka.com" //正式
+  // apiUrl: "https://test.jcrsjy.com" //测试
 })

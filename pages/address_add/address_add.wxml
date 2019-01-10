@@ -1,5 +1,5 @@
 <!--pages/address_add/address_add.wxml-->
-<view>
+<view style='padding-bottom:149rpx'>
   <view class='addr_content' wx:for='{{addressList}}'>
     <view class='addr addr_left'>
     <view class='top'>{{item.recipient}}</view>

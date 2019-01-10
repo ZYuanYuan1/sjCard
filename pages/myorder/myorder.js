@@ -290,7 +290,7 @@ Page({
                 wx.request({
                   url: getApp().apiUrl + '/api/order/creatPayOrder',
                   method: 'post',
-                  data: { 'orderid': orderId, addressId: that.data.addressList.userAddrId, isReplace:true },
+                  data: { 'orderid': orderId, addressId: that.data.addressList.userAddrId},
                   header: { 'content-type': 'application/x-www-form-urlencoded', 'Authorization': tokenVal },
                   success: function (res) {
                     console.log(res);
@@ -424,7 +424,7 @@ Page({
           wx.request({
             url: getApp().apiUrl + '/api/order/creatPayOrder',
             method: 'post',
-            data: { 'orderid': orderId, 'addressId': that.data.addressList.userAddrId, isReplace: true },
+            data: { 'orderid': orderId, 'addressId': that.data.addressList.userAddrId},
             header: { 'content-type': 'application/x-www-form-urlencoded', 'Authorization': tokenVal },
             success: function (res) {
               console.log(res);

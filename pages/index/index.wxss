@@ -309,3 +309,9 @@ width:100%;
   z-index: 0;
   vertical-align: middle
 }
+.bottom{
+  font-size:24rpx;
+  color:#999;
+  background:#fff;
+  padding-top:10rpx;
+}

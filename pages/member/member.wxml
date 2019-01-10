@@ -4,6 +4,7 @@
   <view class="yellowbox">
     <view class="peopleimg" bindtap='skip_myinfo' wx:if="{{userInfo.avatarurl}}">
         <image src="{{userInfo.avatarurl}}" binderror="errImg" data-err-img="{{userInfo.avatarurl}}"></image>
+        <view style='font-size:18rpx;text-align:center;padding-top:10rpx;'>编辑</view>
     </view>
     <!--当头像为空时使用默认图片-->
     <view class="peopleimg" bindtap='skip_myinfo' wx:else>

@@ -40,5 +40,8 @@ page{
   bottom: 35rpx;
   left: 43rpx;
   background: #F5BF00;
-  color: #ffffff
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center
 }
