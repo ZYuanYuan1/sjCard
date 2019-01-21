@@ -3,6 +3,5 @@
   "enablePullDownRefresh": false,
   "usingComponents": {
     "painter": "../../components/painter/painter"
-  },
-  "disableScroll": true
+  }
 }

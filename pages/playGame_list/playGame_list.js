@@ -17,6 +17,7 @@ Page({
     searchInput: '',
     curPage: 1,
     pageSize: 10,
+    acName:"分类"
   },
 
   tabClick: function (e) {
@@ -158,7 +159,13 @@ Page({
   },
   searchEnd(e){
     console.log(e)
-    let activeClassId = e.currentTarget.id
+    var acName = e.currentTarget.dataset.name
+    let activeClassId = e.currentTarget.id;
+    if (acName!=null){
+       this.setData({
+         acName: acName
+       })
+    }
     if (e.currentTarget.dataset.c == true) {
       activeClassId = this.data.activeClassId
     }

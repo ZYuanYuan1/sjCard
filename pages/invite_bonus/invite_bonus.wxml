@@ -28,7 +28,7 @@
           </view>
         </view>
       </block>
-      <view wx:if="{{reachBottomTip==true}}" class="reachbottom">到底啦</view>
+      <view wx:if="{{reachBottomTip==true}}" class="reachbottom" style='font-size:24rpx'>到底啦</view>
     </view>
     <!-- 没邀请时显示 -->
     <view class="nodata" wx:else>暂无数据</view>

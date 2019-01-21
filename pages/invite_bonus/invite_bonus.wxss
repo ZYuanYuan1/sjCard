@@ -2,7 +2,6 @@
 .topimgbox {
   position: relative;
 }
-
 view.bgimgbox {
   height: 188rpx;
   width: 100%;
