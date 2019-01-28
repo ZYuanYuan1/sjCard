@@ -6,7 +6,7 @@ var hadLastPage = false;
 var sliderWidth = 55; // 需要设置slider的宽度，用于计算中间位置
 Page({
   data: {
-    tabs: ["全部", "待参与", "未参与","待评价"],
+    tabs: ["全部", "待参与", "已过期","待评价"],
     showPhoneModal: false,//手机号绑定弹框
     showModal: false,//电子券弹框
     showCancelModal: false,//取消任务
@@ -190,7 +190,6 @@ Page({
   },
   //去取消按钮
   onConfirm: function (e) {
-    console.log('取消');
     var that = this;
     var orderNo = e.target.dataset.orderNo;
     console.log(orderNo);
@@ -212,7 +211,9 @@ Page({
                 showCancelModal: false
               })
               hadLastPage = false;
-             
+              that.setData({
+                taskList: []
+              })
               that.initMyTaskListFun();//加载列表
               wx.showToast({
                 title: '取消成功',

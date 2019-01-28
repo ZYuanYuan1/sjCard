@@ -39,7 +39,7 @@
                               <view class="orderdetailbox"  bindtap='skip_coreDetail' data-business-id="{{item.businessactivityid}}">
                                 <view class="orderrightupbox">
                                   <view class="upheadline">{{item.activityname}}</view>
-                                  <text class="rightstatus">未参与</text>
+                                  <text class="rightstatus">已过期</text>
                                 </view>
                                 <view class="orderrightdownbox">
                                   <view>任务时间：<text>{{item.completedate}}</text></view>
@@ -99,7 +99,7 @@
                               <view class="orderdetailbox">
                                 <view class="orderrightupbox">
                                   <view class="upheadline">{{item.activityname}}</view>
-                                  <text class="rightstatus">未参与</text>
+                                  <text class="rightstatus">已过期</text>
                                 </view>
                                 <view class="orderrightdownbox">
                                   <view>任务时间：<text>{{item.completedate}}</text></view>
