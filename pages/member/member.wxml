@@ -31,7 +31,7 @@
           <view class="arrowbox" bindtap='skip_memberPromote'>会员升级 <image class="arrowimg" src="https://img.sahuanka.com/sjCard/images/rightbutton.jpg"></image></view>
       </view>
       </view>
-        <image style=" width:74rpx;height:88rpx;margin-left:136rpx;margin-top:28rpx;" src='http://img.sahuanka.com/sjCard/images/reward.png' bindtap='skip_invite_bonus'></image>
+        <image style=" width:88rpx;height:88rpx;margin-left:120rpx;margin-top:28rpx;" src='https://img.sahuanka.com/earlyEdu-card/images/reward3.gif' bindtap='skip_invite_bonus'></image>
     </view>
   </view>
   <!--选项-->
