@@ -242,7 +242,7 @@ Page({
       base64src(this.data.img).then(res => {
         let qrcode = res
         wx.getImageInfo({
-          src: 'https://img.sahuanka.com/sjCard/images/poster_bg2.jpg',
+          src: 'https://img.sahuanka.com/sjCard/images/poster_bg3.jpg',
           success: function (res) {
             that.setData({
               showModal: true,
@@ -266,17 +266,30 @@ Page({
           css: {
             width: '120rpx',
             height: '120rpx',
-            left: '82rpx',
-            top: '700rpx',
+            left: '405rpx',
+            top: '830rpx',
             borderRadius: '60rpx'
           }
-        },
+        }
+        ,
+        {
+          type: 'text',
+          text: '我是',
+          css: {
+            left: '380rpx',
+            top: '450rpx',
+            fontSize: '24rpx',
+            color: '#333333',
+            align: 'center'
+          },
+        }
+        ,
         {
           type: 'text',
           text: nickName,
           css: {
-            left: '340rpx',
-            top: '182rpx',
+            left: '470rpx',
+            top: '450rpx',
             fontSize: '24rpx',
             color: '#DC0201',
             align: 'center'
