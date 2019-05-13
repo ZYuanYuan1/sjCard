@@ -11,7 +11,7 @@
     "pages/address/address",
     "pages/orderEmpty/orderEmpty",
     "pages/myshopping/myshopping",
-     "pages/playGame/playGame",
+    "pages/playGame/playGame",
     "pages/invite_bonus_intro/invite_bonus_intro",
     "pages/invite_business_info/invite_business_info",
     "pages/apply/apply",
@@ -80,5 +80,6 @@
         "text": "我的"
       }
     ]
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }

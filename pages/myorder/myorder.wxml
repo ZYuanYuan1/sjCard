@@ -102,7 +102,7 @@
       <text><text class="star">* </text>身份证 :</text>
       <input type="text" bindinput='orderCard' placeholder='身份证' />
     </view>
-    <view class="namebox box">
+    <view class="namebox box" style="margin-bottom: 120rpx;">
       <picker mode="date" value="{{orderDate}}" start="2018-07-01" end="2037-07-01" bindchange="orderDate">
         <view class="picker">
           <text class="star">* </text>出行日期: {{orderDate}}
@@ -165,7 +165,7 @@
     <!-- 尾部 -->
     <view class='footer'>
       <view class='fontTwo' style='flex:0 0 64%'>
-        <text class="fontThree" style='color:#D0021B;'>实付：{fromMyOrder.amount?fromMyOrder.amount:'0.00'}}</text>
+        <text class="fontThree" style='color:#D0021B;'>实付：{{fromMyOrder.amount?fromMyOrder.amount:'0.00'}}</text>
       </view>
       <view data-order-id="{{fromMyOrder.orderid}}" data-order-number="{{fromMyOrder.orderno}}" bindtap='wxpay' class='fontTwo fontThree count' style='color:#ffffff'>
         付款

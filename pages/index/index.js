@@ -55,7 +55,6 @@ Page({
     qqmapsdk = new QQMapWX({
       key: config.key
     });
-    // console.log(options);
     //邀请的电话号码
     if (options.inviteUserPhone) {
       var inviteUserPhone = options.inviteUserPhone;
@@ -64,7 +63,6 @@ Page({
     var that = this;
     page = 1;
     hadLastPage = false;
-    // that.loadScoreListFun('', this.data.taskval, this.data.areaval, this.data.sortval);
     that.loadBannerListFun(); //banner数据加载。。。
     that.loadMessageFun(); //最新消息数据加载。。。
     // 地址数据加载。。。。。。
@@ -72,15 +70,10 @@ Page({
       that.setData({
         'locationStr': options.location
       })
-      // app.globalData.latitude = options.latitude;
-      // app.globalData.longitude = options.longitude;
-      // console.log(options.latitude + '|' + options.longitude);
       that.locationFun();
     } else {
       that.locationFun();
     }
-
-    // this.setData({'isfirst':''})
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -100,12 +93,7 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    //var homeList = this.data.homeList;
-    //this.setData({ searchVal: '', 'homeList': [], reachBottomTip: false });
-    //page = 1;
-    //hadLastPage = false;
-    //this.loadScoreListFun('');
-    //this.loadBannerListFun();
+    
   },
 
   /**
@@ -116,7 +104,6 @@ Page({
   },
   //选项卡方法
   filterTitlesSelectedAtIndex0: function (event) {
-    // console.log(event)
     var index = event.currentTarget.dataset.index
     if (this.data.tasksSelectedIndex !== index) {
       this.setData({
@@ -124,7 +111,6 @@ Page({
         areaHiden: true,
         sortHiden: true,
         tasksSelectedIndex: index,
-        //filterTitleSelectedIndex:0
       })
     } else {
 
@@ -134,7 +120,6 @@ Page({
         sortHiden: true,
       })
     }
-    // console.log(index + " " + this.data.taskHiden)
   },
   filterTitlesSelectedAtIndex1: function (event) {
     // console.log(event)
@@ -145,7 +130,6 @@ Page({
         areaHiden: false,
         sortHiden: true,
         areasSelectedIndex: index,
-        //filterTitleSelectedIndex: 0
       })
     } else {
 
@@ -155,10 +139,8 @@ Page({
         sortHiden: true,
       })
     }
-    // console.log(index + " " + this.data.sortHiden)
   },
   filterTitlesSelectedAtIndex2: function (event) {
-    // console.log(event)
     var index = event.currentTarget.dataset.index
     if (this.data.sortsSelectedIndex !== index) {
       this.setData({
@@ -166,17 +148,14 @@ Page({
         areaHiden: true,
         sortHiden: false,
         sortsSelectedIndex: index,
-        //filterTitleSelectedIndex: 0
       })
     } else {
-
       this.setData({
         sortHiden: !this.data.sortHiden,
         taskHiden: true,
         areaHiden: true,
       })
     }
-    // console.log(index + " " + this.data.sortHiden)
   },
 
   filterTitleSelectedAtIndex0: function (event) {
@@ -201,7 +180,6 @@ Page({
     this.setData({
       filterDropDownListHiden: true
     })
-    // console.log(index + " " + this.data.filterDropDownListHiden)
   },
   filterTitleSelectedAtIndex1: function (event) {
     var index = event.currentTarget.dataset.index
@@ -225,7 +203,6 @@ Page({
     this.setData({
       filterDropDownListHiden: true
     })
-    // console.log(index + " " + this.data.filterDropDownListHiden)
   },
   filterTitleSelectedAtIndex2: function (event) {
     var index = event.currentTarget.dataset.index
@@ -249,13 +226,10 @@ Page({
     this.setData({
       filterDropDownListHiden: true
     })
-    // console.log(index + " " + this.data.filterDropDownListHiden)
   },
 
   //加载赚积分课程方法
   loadScoreListFun: function (searchVal, subtype, area, sort) {
-    // console.log(searchVal + '|' + subtype + '|' + area + '|' + sort);
-
     var that = this;
     if (hadLastPage != false) {
       that.setData({

@@ -12,6 +12,8 @@
 	"libVersion": "2.5.0",
 	"appid": "wx5d1688c43c51aea9",
 	"projectname": "%E8%B5%8F%E9%87%91",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,
@@ -29,8 +31,15 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
-			"list": []
+			"current": 0,
+			"list": [
+				{
+					"id": -1,
+					"name": "playGame_list",
+					"pathName": "pages/playGame_list/playGame_list",
+					"scene": null
+				}
+			]
 		}
 	}
 }
